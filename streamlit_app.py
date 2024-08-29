@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit_app as st
 import requests
 
 # Function to send a request to the FastAPI backend
