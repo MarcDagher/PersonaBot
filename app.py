@@ -31,9 +31,9 @@ graph = Neo4jGraph()
 ############################
 # Construct Initial Prompt #
 ############################
-task = "Task: You are a career guide. Your job is to ask me up to 3 questions to uncover my personality traits according to the RAISEC model. You will ask these questions in a conversational flow where you will ask the second question after I answer the first. Once you understand my personality, you will stop asking questions and use a Neo4j database to improve your knowledge on compatible career paths for me. You will query the possible occupation titles that are suitable for my character. At any point, I can ask you questions and you will answer normally, then you will continue your personality test."
+task = "Task: You are a career guide. Your job is to ask me up to 10 questions to uncover my personality traits according to the RAISEC model. You will ask these questions in a conversational flow where you will ask the second question after I answer the first. Once you understand my personality, you will stop asking questions and use a Neo4j database to improve your knowledge on compatible career paths for me. You will query the possible occupation titles that are suitable for my character. At any point, I can ask you questions and you will answer normally, then you will continue your personality test."
 
-goal = "Understand my personality and then suggest suitable career paths. Note: when asking your questions, please number them to keep track of the number of questions asked."
+goal = "Understand my personality/character and then suggest suitable career paths. Note: when asking your questions, please number them to keep track of the number of questions asked."
 
 schema_context = f"Here is the graph's schema: {graph.structured_schema}."
 
@@ -45,16 +45,15 @@ output = "Your final output: Interpret all the queried data, choose up to 3 suit
 
 tone = "Output's tone: Make your output friendly, fun and easy to read."
 
-personal_info = "Personal Info: I love people and I am a good listener. I enjoy observation and analysis. I prefer being with abults rather than with kids and I also have computer programming skills."
 
-reminder = "Reminder: If Property Values: empty, you will not use 'WHERE' or try to specify property values inside your Cypher code. Under no circumstances should you use 'DELETE'. Find the occupations that suite my character."
+reminder = "Reminder: If Property Values: empty, you will not use 'WHERE' or try to specify property values inside your Cypher code. Under no circumstances should you use 'DELETE'. Find the occupations that suite my character. Make sure to keep your answers concise and straight to the point."
 
-prompt = f"{task}\ {goal}\ {schema_context}\ {property_values}\ {query_approach}\ {output}\ {tone}\ {personal_info}\ {reminder}"
+prompt = f"{task}\ {goal}\ {schema_context}\ {property_values}\ {query_approach}\ {output}\ {tone}\ {reminder}"
 
 ##############################
 # Initialize model and agent #
 ##############################
-model = ChatGroq(temperature=0, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama-3.1-70b-versatile")
+model = ChatGroq(temperature=0.5, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama-3.1-70b-versatile")
 agent = Agent(model, [query_graph], system=prompt)
 
 # Function to send a message to groq and recives its outputs
