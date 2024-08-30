@@ -76,9 +76,18 @@ class QueryRequest(BaseModel):
 # Create route
 @app.post("/query/")
 async def query_model(request: QueryRequest):
-    user_message = HumanMessage(content=request.query)
-    ai_response = send_user_message(user_message)
-    return ai_response
+    try:
+        user_message = HumanMessage(content=request.query)
+        ai_response = send_user_message(user_message)
+        return ai_response
+    except Exception as e:
+        
+        print("-----------------")
+        print(e)
+        print("-----------------")
+        if e.response.status_code == 422: return "Unprocessable Entry"
+        elif e.response.status_code == 500: return "Internal Server Error"
+        elif e.response.status_code == 503: return "Internal Server Error"
 
 # Only run this if the script is executed directly (not inside a notebook or interactive shell)
 if __name__ == "__main__":

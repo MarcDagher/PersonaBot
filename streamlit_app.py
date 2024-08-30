@@ -1,4 +1,4 @@
-import streamlit_app as st
+import streamlit as st
 import requests
 
 # Function to send a request to the FastAPI backend
@@ -10,10 +10,15 @@ def get_api_response(user_message):
 if "messages" not in st.session_state:
   st.session_state.messages = []
 
-# On app load, display chat messages from history on app rerun
-for message in st.session_state.messages:
-  with st.chat_message(message["role"]):
-    st.markdown(message["content"])
+# When the chat has no previous messages, don't load text boxes. Load a text instead
+if len(st.session_state.messages) == 0:
+  st.write("Testing")
+
+else:
+  # Display chat messages from history on app rerun
+  for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+      st.markdown(message["content"])
 
 ## Handle User Messages (:= assigns chat_input's result to prompt while checking if its none)
 if prompt := st.chat_input(placeholder = "Your message ..."):
@@ -23,11 +28,17 @@ if prompt := st.chat_input(placeholder = "Your message ..."):
   with st.chat_message("user"):
     st.markdown(prompt)
 
-## Handle AI response
-api_output = get_api_response(user_message=prompt)
-print(len(api_output))
-ai_response = api_output['response'][-1]
-with st.chat_message("assistant"):
-  response = st.markdown(ai_response)
-st.session_state.messages.append({"role": "assistant", "content": ai_response})
-
+if prompt:
+  ## Handle AI response
+  api_output = get_api_response(user_message=prompt)
+  print("------------")
+  print(len(api_output))
+  print(api_output)
+  print("------------")
+  if isinstance(api_output, str):
+    st.write(api_output)
+  else:
+    ai_response = api_output['response'][-1]
+    with st.chat_message("assistant"):
+      response = st.markdown(ai_response)
+    st.session_state.messages.append({"role": "assistant", "content": ai_response})
