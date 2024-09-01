@@ -39,9 +39,12 @@ schema_context = f"Here is the graph's schema: {graph.structured_schema}."
 
 property_values = f"Property Values: empty"
 
-query_approach = "Querying approach: You will not use 'LIMIT'. If Property Values: empty, you will not use general queries and will not include 'WHERE' or try to specify property values inside your Cypher code."
+query_approach = """Querying approach: You will not use 'LIMIT'. If Property Values: empty, you will only use general queries and will not include 'WHERE' or try to specify property values inside your Cypher code. 
+ex: MATCH (n:label_1)-[]->(m:label_2) return n,m
+not: MATCH (n:label_1)-[]->(m:label_2) WHERE m.title='whatever' return n,m
+"""
 
-output = "Your final output: Interpret all the queried data, choose up to 3 suitable careers for me, list them in bullet points and include a brief explanation of how each path suites my personality. Include Cypher code in your answer."
+output = "Your final output: Interpret all the queried data, choose up to 6 suitable careers for me, list them in bullet points and include a brief explanation of how each path suites my personality. Include Cypher code in your answer."
 
 tone = "Output's tone: Make your output friendly, fun and easy to read."
 
