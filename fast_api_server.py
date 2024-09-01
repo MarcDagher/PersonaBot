@@ -31,7 +31,7 @@ graph = Neo4jGraph()
 ############################
 # Construct Initial Prompt #
 ############################
-task = "Task: You are a career guide. Your job is to ask me up to 10 questions to uncover my personality traits according to the RAISEC model. You will ask these questions in a conversational flow where you will ask the second question after I answer the first. Once you understand my personality, you will stop asking questions and use a Neo4j database to improve your knowledge on compatible career paths for me. You will query the possible occupation titles that are suitable for my character. At any point, I can ask you questions and you will answer normally, then you will continue your personality test."
+task = "Task: You are a career guide. Your job is to ask me up to 3 questions to uncover my personality traits according to the RAISEC model. You will ask these questions in a conversational flow where you will ask the second question after I answer the first. Once you understand my personality, you will stop asking questions and use a Neo4j database to improve your knowledge on compatible career paths for me. You will query the possible occupation titles that are suitable for my character. At any point, I can ask you questions and you will answer normally, then you will continue your personality test."
 
 goal = "Understand my personality/character and then suggest suitable career paths. Note: when asking your questions, please number them to keep track of the number of questions asked."
 

@@ -1,16 +1,18 @@
-# LangGraph and LangChain
-from langgraph.graph import StateGraph, END
-from typing import TypedDict, Annotated # to construct the agent's state
-import operator
+# LangChain
 from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ToolMessage
-from langgraph.checkpoint.memory import MemorySaver
 from langchain.graphs import Neo4jGraph
 from langchain_core.tools import tool
 
-# To load Environment Variables
+# LangGraph
+from langgraph.graph import StateGraph, END
+from langgraph.checkpoint.memory import MemorySaver
+
+# General Imports
 import os
+import operator
 from pathlib import Path
 from dotenv import load_dotenv
+from typing import TypedDict, Annotated # to construct the agent's state
 
 # Connect to graph
 dotenv_path = Path('./.env')
@@ -23,7 +25,7 @@ graph = Neo4jGraph()
 # Create the tool to be used by the Agent
 @tool
 def query_graph(query):
-  """Requires get_graph_schema to be run before using this function. This function is to Query from Neo4j knowledge graph using Cypher."""
+  """Query from Neo4j knowledge graph using Cypher."""
   return graph.query(query)
 
 
@@ -36,8 +38,11 @@ class Agent:
 
     def __init__(self, model, tools, system=""):
         self.system = system
+        self.tools = {t.name: t for t in tools} # Save the tools' names that can be used
+        self.model = model.bind_tools(tools) # Provide the name of the tools to the agent
+
         graph = StateGraph(AgentState) # initialize a stateful graph
-        memory = MemorySaver() # initialize
+        memory = MemorySaver()
 
         graph.add_node("llm", self.call_groq) # Add LLM node
         graph.add_node("action", self.take_action) # Add Tool node
@@ -51,10 +56,8 @@ class Agent:
 
         self.graph = graph.compile(checkpointer=memory) # Build graph
         
-        self.tools = {t.name: t for t in tools} # Save the tools' names that can be used
-        self.model = model.bind_tools(tools) # Provide the name of the tools to the agent
 
-    # Used by the Agent to check if an action exists by checking the last message in the state which is supposed to contain the tool's info
+    # Check if an action exists by checking the last message in the state which is supposed to contain the tool's info
     def exists_action(self, state: AgentState):
         result = state['messages'][-1]
         return len(result.tool_calls) > 0

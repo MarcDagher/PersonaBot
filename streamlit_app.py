@@ -11,10 +11,10 @@ def get_api_response(user_message):
     return response.json()
 
 # Function to create a line that is used as a separator
-def add_separator():
+def add_separator(color="#AAAAAA"):
   st.sidebar.markdown(
-  """
-    <div style="height: 1px; width: 100%; background-color: #AAAAAA"></div>
+  f"""
+    <div style="height: 1px; width: 100%; background-color: {color}"></div>
   """, unsafe_allow_html=True
   )
 
@@ -49,11 +49,11 @@ model_name = st.sidebar.selectbox(
     placeholder="llama-3.1-70b-versatile"
 )
 
-model_temperature = st.sidebar.slider(label="Specify the model's temperature:", step=0.1, min_value=0.0, max_value=1.0)
+add_separator(color='transparent')
+
+model_temperature = st.sidebar.slider(label="Specify the model's temperature (creativity):", step=0.1, min_value=0.0, max_value=1.0)
 
 st.sidebar.button(label="Save Changes", type='secondary')
-
-add_separator()
 
 ############################
 # Handle User Messages' UI #
