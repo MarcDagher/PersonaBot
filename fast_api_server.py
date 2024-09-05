@@ -56,7 +56,8 @@ prompt = f"{task}\ {goal}\ {schema_context}\ {property_values}\ {query_approach}
 ##############################
 # Initialize model and agent #
 ##############################
-model = ChatGroq(temperature=0.5, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama-3.1-70b-versatile")
+# model = ChatGroq(temperature=0.5, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama-3.1-70b-versatile")
+model = ChatGroq(temperature=0.8, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama3-70b-8192")
 agent = Agent(model, [query_graph], system=prompt)
 
 # Function to send a message to groq and recives its outputs
