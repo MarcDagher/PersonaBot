@@ -32,3 +32,17 @@ extractor_prompt = "You have now queried the graph.\
 recommender_prompt = "You queried the graph and extracted the necessary data from the returned output.\
             Here are the extracted data: {extracted_data}\
             now use the conversation's history with the extracted data from the returned query to give me suitable career tracks."
+
+query_validator_prompt = """
+You are a Cypher query analyst. Your task is to detect similar queries.\
+I will give you a new cypher query and I will give you a list of queries made of tuples containing [(index, cypher query code)]\
+Example of the list of tuples: [(index: 0, query...)]\
+You will analyze the new cypher query and check if it is found in the list of queries.\
+if a similar query is found in the list, you will return the number assigned to the cypher query in the list, which is the index. if the query is not found in the list you will return 'None'.\
+dont add any description or explanation.\
+Summary: your output is either the index number assigned to the query or 'None'\
+Examples: \
+You find that the new query exists, return 'None\
+You find that the new query does not exist in the list, return 1\
+note that 1 is the index inside the tuple\
+"""
