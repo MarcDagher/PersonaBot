@@ -23,7 +23,7 @@ from langsmith import traceable
 ##################################
 # Connect to graph and LangSmith #
 ##################################
-dotenv_path = Path('./.env')
+dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["NEO4J_URI"] = os.getenv('uri')
 os.environ["NEO4J_USERNAME"] = os.getenv('user_name')

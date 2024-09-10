@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 #############################
 # Get environment variables #
 #############################
-dotenv_path = Path('./.env')
+dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["GROQ_API_KEY"] = os.getenv('GROQ_API_KEY')
 
@@ -33,6 +33,7 @@ graph = Neo4jGraph()
 # Initialize model and agent #
 ##############################
 model = ChatGroq(temperature=0.7, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama-3.1-70b-versatile")
+# model = ChatGroq(temperature=0.7, groq_api_key=os.environ["GROQ_API_KEY"], model_name="llama3-70b-8192")
 agent = agent_workflow.Agent(
     model=model, 
     tools=[agent_workflow.query_graph], 
@@ -53,12 +54,12 @@ def send_user_message(user_message):
 ##################
 app = FastAPI()
 
-class Request(BaseModel):
+class Messages(BaseModel):
     message: str
 
-# Create route
-@app.post("/request/")
-async def call_agent(request: Request):
+
+@app.post("/messages/")
+async def call_agent(request: Messages):
     try:
         user_message = HumanMessage(content=request.message)
         ai_response = send_user_message(user_message)
@@ -69,6 +70,7 @@ async def call_agent(request: Request):
         print(e)
         print("-----------------")
         if e.response.status_code == 422: return "Unprocessable Entry"
+        if e.response.status_code == 429: return "Rate limit reached for model"
         elif e.response.status_code == 500: return "Internal Server Error"
         elif e.response.status_code == 503: return "Internal Server Error"
 

@@ -7,7 +7,7 @@ import requests
 
 # Function to send a request to the FastAPI backend
 def get_api_response(user_message):
-    response = requests.post(url="http://127.0.0.1:8000/request", json={"message": user_message})
+    response = requests.post(url="http://127.0.0.1:8000/messages", json={"message": user_message})
     return response.json()
 
 # Function to create a line that is used as a separator
@@ -18,7 +18,9 @@ def add_separator(color="#AAAAAA"):
   """, unsafe_allow_html=True
   )
 
-# Chat history
+###############################
+# Landing Page's Greeting Box #
+###############################
 if "messages" not in st.session_state:
   st.session_state.messages = []
   # grey: #F0F2F6
@@ -43,18 +45,6 @@ st.sidebar.markdown("""
 
 add_separator()
 
-model_name = st.sidebar.selectbox(
-    label = "Choose the model you want to work with:",
-    options=("llama-3.1-70b-versatile", "llama-3.1-8b-instant", "mixtral-8x7b-32768", "gemma2-9b-it"),
-    placeholder="llama-3.1-70b-versatile"
-)
-
-add_separator(color='transparent')
-
-model_temperature = st.sidebar.slider(label="Specify the model's temperature (creativity):", step=0.1, min_value=0.0, max_value=1.0)
-
-st.sidebar.button(label="Save Changes", type='secondary')
-
 ############################
 # Handle User Messages' UI #
 ############################
@@ -71,7 +61,8 @@ if prompt:
   
   # Check for errors
   if isinstance(api_output, str):
-    st.write(f"Somthing went wrong: {api_output}. Please send your message again.")
+    st.session_state.messages.append({"role": "assistant", "content": f"Somthing went wrong: {api_output}."})
+
   # Save in messages and display it
   else:
     ai_response = api_output['response'][-1]
