@@ -46,7 +46,11 @@ def send_user_message(user_message):
     response = []
     for event in agent.graph.stream({"conversation": [user_message]}, config, stream_mode="values"):
         response.append(event["conversation"][-1].content)
-    return {"response": response}
+    
+    state = agent.graph.get_state(config=config).values
+    num_queries_made = state['num_queries_made']
+    cypher_code_and_query_outputs = state['cypher_code_and_query_outputs']
+    return {"response": response, "num_queries_made": num_queries_made, "cypher_code_and_query_outputs": cypher_code_and_query_outputs}
 
 
 ##################

@@ -1,14 +1,11 @@
+import ast
 import streamlit as st
-import requests
+from chat_page import display_chat_page
+from app_helper_functions import create_plotly_graph
 
 ###########################
 # General Initializations #
 ###########################
-
-# Function to send a request to the FastAPI backend
-def get_api_response(user_message):
-    response = requests.post(url="http://127.0.0.1:8000/messages", json={"message": user_message})
-    return response.json()
 
 # Function to create a line that is used as a separator
 def add_separator(color="#AAAAAA"):
@@ -18,23 +15,22 @@ def add_separator(color="#AAAAAA"):
   """, unsafe_allow_html=True
   )
 
-###############################
-# Landing Page's Greeting Box #
-###############################
+def set_current_page(page="chat"):
+  st.session_state.current_page = page
+
+#########################################
+# Initialize Streamlit's Sesstion State #
+#########################################
+if not ("pages" and "current_page") in st.session_state:
+  st.session_state.pages = ["chat", "graph"]
+  st.session_state.current_page = "chat"
+
 if "messages" not in st.session_state:
   st.session_state.messages = []
-  # grey: #F0F2F6
-  # red: #FF4B4B
-  st.markdown(
-    """
-    <div style="font-size: 20px; margin-top: 20px; display: flex; justify-content: center; align-items: center; height: 100px;">
-        <div style="text-align: center; background-color: #F0F2F6; border-radius: 10px; padding: 30px;">
-            Hello, I am <strong>PersonaBot</strong>.<br>
-            Please let me know when you're ready 😊.
-        </div>
-    </div>
-    """, unsafe_allow_html=True
-    )
+
+if not ("num_queries_made" and "cypher_code_and_query_outputs") in st.session_state:
+  st.session_state.num_queries_made = 0
+  st.session_state.cypher_code_and_query_outputs = []
 
 ###########
 # Sidebar #
@@ -45,32 +41,24 @@ st.sidebar.markdown("""
 
 add_separator()
 
-############################
-# Handle User Messages' UI #
-############################
-if prompt := st.chat_input(placeholder = "Your message ..."): # (:= assigns chat_input's result to prompt while checking if its none)
-  # Add user message to chat history
-  st.session_state.messages.append({"role": "user", "content": prompt})
+st.sidebar.button(label="Chat", on_click=set_current_page, kwargs={'page': 'chat'})
+st.sidebar.button(label="Knowledge Graph", on_click=set_current_page, kwargs={'page': 'graph'})
 
-##########################
-# Handle AI Message's UI #
-##########################
-if prompt:
-  # Receive AI's output
-  api_output = get_api_response(user_message=prompt)
-  
-  # Check for errors
-  if isinstance(api_output, str):
-    st.session_state.messages.append({"role": "assistant", "content": f"Somthing went wrong: {api_output}."})
 
-  # Save in messages and display it
+if st.session_state.current_page == 'chat':
+  new_session_state = display_chat_page(session_state=st.session_state)
+  st.session_state = new_session_state
+
+#######################
+# Display Graph in UI #
+#######################
+elif st.session_state.current_page == 'graph':
+  if st.session_state.num_queries_made > 0:
+    output = st.session_state.cypher_code_and_query_outputs[-1]['output']
+    if output:
+      st.sidebar.write("We have a graph")
+      graph = create_plotly_graph(ast.literal_eval(output))
+      
+      st.sidebar.plotly_chart(graph)
   else:
-    ai_response = api_output['response'][-1]
-    st.session_state.messages.append({"role": "assistant", "content": ai_response})
-
-##########################
-# Display Messages in UI #
-##########################
-for message in st.session_state.messages:
-  with st.chat_message(message["role"]):
-    st.markdown(message["content"])
+    st.sidebar.write("Ain't no graph yet")
