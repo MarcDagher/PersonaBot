@@ -7,7 +7,7 @@ import requests
 
 # Function to send a request to the FastAPI backend
 def get_api_response(user_message):
-    response = requests.post(url="http://127.0.0.1:8000/query", json={"query": user_message})
+    response = requests.post(url="http://127.0.0.1:8000/request", json={"message": user_message})
     return response.json()
 
 # Function to create a line that is used as a separator
