@@ -1,6 +1,6 @@
 import ast
 import streamlit as st
-from app_helper_functions import display_knowledge_graph, display_extracted_traits_data, display_error_box
+from Streamlit_Sub_Folder.Helpers.app_helper_functions import display_knowledge_graph, display_extracted_traits_data, display_error_box
 
 def display_knowledge_graph_page(session_state):
   

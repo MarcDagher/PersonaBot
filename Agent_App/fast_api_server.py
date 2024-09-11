@@ -9,18 +9,17 @@ from langchain.graphs import Neo4jGraph
 from langchain_core.messages import HumanMessage
 
 ## LangGraph
-import agent_workflow
+from FastAPI_Sub_Folder.Helpers import agent_workflow, prompts
 
 ## Environment Variables
 import os
-import prompts
 from pathlib import Path
 from dotenv import load_dotenv
 
 #############################
 # Get environment variables #
 #############################
-dotenv_path = Path('../.env')
+dotenv_path = Path('.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["GROQ_API_KEY"] = os.getenv('GROQ_API_KEY')
 

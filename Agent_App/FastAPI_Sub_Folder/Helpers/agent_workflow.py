@@ -14,15 +14,17 @@ from langsmith import traceable
 # General Imports
 import os
 import ast
-import prompts 
 import operator
 from pathlib import Path
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated # to construct the agent's state
 from IPython.display import Image, display
+from FastAPI_Sub_Folder.Helpers import prompts 
 
 # Connect to graph
 dotenv_path = Path('../.env')
+success = load_dotenv(dotenv_path=dotenv_path)
+print(f"\n\n-------- {success}")
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["NEO4J_URI"] = os.getenv('uri')
 os.environ["NEO4J_USERNAME"] = os.getenv('user_name')

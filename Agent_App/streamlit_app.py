@@ -1,8 +1,8 @@
 import ast
 import streamlit as st
-from sidebar import side_bar
-from chat_page import display_chat_page
-from knowledge_graph_page import display_knowledge_graph_page
+from Streamlit_Sub_Folder.Pages.sidebar import side_bar
+from Streamlit_Sub_Folder.Pages.chat_page import display_chat_page
+from Streamlit_Sub_Folder.Pages.knowledge_graph_page import display_knowledge_graph_page
 
 #########################################
 # Initialize Streamlit's Sesstion State #

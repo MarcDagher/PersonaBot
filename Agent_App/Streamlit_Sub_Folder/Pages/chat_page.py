@@ -1,5 +1,5 @@
 import streamlit as st
-from api_functions import get_api_response
+from Streamlit_Sub_Folder.Helpers.api_functions import get_api_response
 
 ## Handles Conversational UI 
 def display_chat_page(session_state):

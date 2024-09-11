@@ -12,7 +12,7 @@ def add_separator(color="#AAAAAA"):
   )
 
 def side_bar(session_state):
-  st.sidebar.image("PersonaBot.png", output_format='PNG', use_column_width=True)
+  st.sidebar.image("Streamlit_Sub_Folder\Assets\PersonaBot.png", output_format='PNG', use_column_width=True)
   st.sidebar.markdown(""" 
                       <p style="font-size: 15px;">
                         An agentic AI system designed to test and analyze your personality. With access to a Neo4j knowledge graph, the system will suggest career paths suitable for your character.
