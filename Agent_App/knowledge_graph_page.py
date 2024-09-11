@@ -1,6 +1,6 @@
 import ast
 import streamlit as st
-from app_helper_functions import display_knowledge_graph, display_extracted_traits_data
+from app_helper_functions import display_knowledge_graph, display_extracted_traits_data, display_error_box
 
 def display_knowledge_graph_page(session_state):
   
@@ -13,7 +13,7 @@ def display_knowledge_graph_page(session_state):
       output = session_state.cypher_code_and_query_outputs[i]['output']
       extracted_data = session_state.extracted_data[i]
 
-      print(f"\n\n\n---------- In graph page {i}: {type(ast.literal_eval(extracted_data))}")
+      # print(f"\n\n\n---------- In graph page {i}: {type(ast.literal_eval(extracted_data))}")
       
       # Validate type of the output
       if isinstance(output, str):
@@ -21,22 +21,37 @@ def display_knowledge_graph_page(session_state):
 
       # If output brought back results
       if len(output) > 0:
-        st.title("We have a graph")
-
+        st.markdown(f"""
+                  <h1 style="font-size: 25px; text-align: center; background-color: #F0F2F6; border-radius:5px; padding: 10px; margin-bottom: 20px">
+                    Knowledge Graph of Agent's Query {i + 2}
+                  </h1>""",  unsafe_allow_html=True)
+        
+        # Knowledge Graph
         try:
-          st.write(f"Query {abs(i)}: `{cypher_code}`")
+          st.markdown(f"""
+                      <p>
+                        <strong style="font-size: 16px;">Cypher Code: </strong> 
+                        <span style="font-size: 13px; background-color: #F0F2F6; padding: 3px 7px; border-radius: 2px; color: #17d10e ;">
+                           <strong>{cypher_code}</strong>
+                        </span>
+                      </p>
+                      """, unsafe_allow_html=True)
           graph = display_knowledge_graph(output)
           st.plotly_chart(graph)
         except:
-          st.write(f"Attempted to draw the graph, but the Agent returned an unexpected knowledge graph format.")
-
+          display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected knowledge graph format. ⚠️")
+        
+        # Extracted Data Graph
         try:
-          st.write(f"Extracted Traits")
+          st.markdown(f"""
+                  <h1 style="font-size: 25px; text-align: center; background-color: #F0F2F6; border-radius:5px; padding: 10px; margin-bottom: 20px">
+                    Agent's Extracted Data From Knowledge Graph {i + 2}
+                  </h1>""",  unsafe_allow_html=True)
+          
           graph = display_extracted_traits_data(ast.literal_eval(extracted_data))
           st.plotly_chart(graph)
-        except:
-          st.write(f"Attempted to draw the graph, but the Agent returned an unexpected format.")
-
+        except Exception as e:
+          display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected format. ⚠️")
 
       # If output is empty
       else:

@@ -1,6 +1,14 @@
+import streamlit as st
 import pandas as pd
 import networkx as nx
 import plotly.graph_objects as go
+
+def display_error_box(text):
+   st.markdown(f"""
+                <p style="font-size: 14px; background-color: #f95353; color: white; text-align: center; border-radius: 5px; padding: 10px 0">
+                    {text}
+                </p>
+              """, unsafe_allow_html=True)
 
 def display_knowledge_graph(data):
   head = []
@@ -77,10 +85,6 @@ def display_knowledge_graph(data):
   fig = go.Figure(data=edge_traces + [node_trace, edge_label_trace], layout=layout)
 
   return fig
-
-import pandas as pd
-import networkx as nx
-import plotly.graph_objects as go
 
 def display_extracted_traits_data(data):
   heads = []
