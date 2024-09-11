@@ -48,9 +48,12 @@ def send_user_message(user_message):
         response.append(event["conversation"][-1].content)
     
     state = agent.graph.get_state(config=config).values
-    num_queries_made = state['num_queries_made']
-    cypher_code_and_query_outputs = state['cypher_code_and_query_outputs']
-    return {"response": response, "num_queries_made": num_queries_made, "cypher_code_and_query_outputs": cypher_code_and_query_outputs}
+    return {
+        "response": response, 
+        "num_queries_made": state['num_queries_made'], 
+        "cypher_code_and_query_outputs": state['cypher_code_and_query_outputs'],
+        "extracted_data": state['extracted_data']
+        }
 
 
 ##################
@@ -73,8 +76,9 @@ async def call_agent(request: Messages):
         print("-----------------")
         print(e)
         print("-----------------")
-        if e.response.status_code == 422: return "Unprocessable Entry"
-        if e.response.status_code == 429: return "Rate limit reached for model"
+        if e.response.status_code == 400: return "Failed to call the function due to your bad prompt"
+        elif e.response.status_code == 422: return "Unprocessable Entry"
+        elif e.response.status_code == 429: return "Rate limit reached for model"
         elif e.response.status_code == 500: return "Internal Server Error"
         elif e.response.status_code == 503: return "Internal Server Error"
 

@@ -3,7 +3,6 @@ import streamlit as st
 from sidebar import side_bar
 from chat_page import display_chat_page
 from knowledge_graph_page import display_knowledge_graph_page
-from app_helper_functions import create_plotly_graph
 
 #########################################
 # Initialize Streamlit's Sesstion State #
@@ -19,6 +18,9 @@ if not ("num_queries_made" and "cypher_code_and_query_outputs") in st.session_st
   st.session_state.num_queries_made = 0
   st.session_state.cypher_code_and_query_outputs = []
 
+if not "extracted_data" in st.session_state:
+  st.session_state.extracted_data = []
+
 #######################
 # UI Order of Display #
 #######################
@@ -28,10 +30,8 @@ st.session_state = side_bar(session_state=st.session_state)
 
 # Chat Page
 if st.session_state.current_page == 'chat':
-  new_session_state = display_chat_page(session_state=st.session_state)
-  st.session_state = new_session_state
+  st.session_state = display_chat_page(session_state=st.session_state)
 
 # Graph Page
 elif st.session_state.current_page == 'graph':
-  new_session_state = display_knowledge_graph_page(session_state=st.session_state)
-  st.session_state = new_session_state
+  st.session_state = display_knowledge_graph_page(session_state=st.session_state)
