@@ -55,10 +55,20 @@ def display_knowledge_graph_page(session_state):
 
       # If output is empty
       else:
-        st.title("Agent used the graph but the output is empty")
+        display_error_box(text="⚠️ Agent used the graph but the output is empty ⚠️")
 
   # If Agent didn't use the graph
   else:
-    st.title("The Agent didn't use the knowledge graph.")
+    st.markdown(
+      """
+      <div style="font-size: 20px; margin-top: 20px; display: flex; justify-content: center; align-items: center; height: 100px;">
+          <div style="text-align: center; background-color: #F0F2F6; border-radius: 10px; padding: 30px;">
+              The <strong>Agent</strong> didn't use the knowledge graph.<br>
+              When the knowledge graph is used you will see the results here🙂<br><br>
+              <strong>Note: </strong>The agent calls the knowledge graph when it decides to suggest career paths. So, make sure you finish the personality test🙃
+          </div>
+      </div>
+      """, unsafe_allow_html=True
+      )
   
   return session_state
