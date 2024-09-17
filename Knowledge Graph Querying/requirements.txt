@@ -1,7 +1,0 @@
-python-dotenv
-py2neo
-PyPDF2
-tenacity
-langchain-groq
-neo4j
-langchain

@@ -1,6 +1,0 @@
-python-dotenv
-langchain
-langgraph
-langchain-groq
-llm-guard
-langchain-core

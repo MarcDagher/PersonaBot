@@ -1,8 +1,0 @@
-groq
-PyPDF2
-python-dotenv
-langchain
-nltk
-pydantic
-py2neo
-beautifulsoup4

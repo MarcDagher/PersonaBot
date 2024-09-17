@@ -1,4 +1,0 @@
-requests
-python-dotenv
-langchain
-langchain_community
