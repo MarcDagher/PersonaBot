@@ -24,7 +24,7 @@ from FastAPI_Sub_Folder.Helpers import prompts
 # Connect to graph
 dotenv_path = Path('../.env')
 success = load_dotenv(dotenv_path=dotenv_path)
-print(f"\n\n-------- {success}")
+
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["NEO4J_URI"] = os.getenv('uri')
 os.environ["NEO4J_USERNAME"] = os.getenv('user_name')
@@ -34,10 +34,10 @@ graph = Neo4jGraph()
 
 # Create Agent's State
 class AgentState(TypedDict):
-    conversation: Annotated[list[ AnyMessage ], operator.add]
-    tool_messages: list[ list[AnyMessage] ]
+    conversation: Annotated[list[ AnyMessage ], operator.add] # History of messages
     cypher_code_and_query_outputs: Annotated[list[ dict ], operator.add]
-    extracted_data: Annotated[list[str], operator.add]
+    extracted_data: Annotated[list[str], operator.add] # Data extracted from query output
+    tool_messages: list[ list[AnyMessage] ] # Returned messages after calling tools
     query_is_unique: dict
     num_queries_made: int
 
@@ -99,8 +99,8 @@ class Agent:
     def use_tool(self, state: AgentState):
         
         tool_calls = state['conversation'][-1].tool_calls
-        num_queries_made = state['num_queries_made']
-        query_uniqueness_dict = {'status': True, 'index': None} # Initialize it as true and only change it if query already exists
+        num_queries_made = state['num_queries_made'] # number of times the graph was used
+        query_uniqueness_dict = {'status': True, 'index': None} # a pointer to a pre-existing query's results
         results = []
         
         for tool in tool_calls:
@@ -123,7 +123,7 @@ class Agent:
                 
                 # Get the current cypher code written by the model
                 query = tool['args']
-                print(f"\n ---- Tool Use Update ----> previous queries: {previous_queries}, new_query: {query}")
+                print(f"---- Tool Use Update ----> previous queries: {previous_queries}, new_query: {query}")
 
                 # Instruct the model to check if query already exists
                 ai_response = self.model.invoke([
@@ -131,11 +131,11 @@ class Agent:
                 HumanMessage(content=f"new cypher query: {query}. List of queries: {previous_queries}")
                 ])
                 
-                print(f"\n---- Tool Use Update ----> ai_response: {ai_response}\n")
+                print(f"---- Tool Use Update ----> ai_response: {ai_response}\n")
                 
-                # If query is new, query the graph
+                # If query is wasn't used before, query the graph
                 if 'none' in ai_response.content.lower():
-                    print(f"\n ---- Tool Use Update ----> new query")
+                    print(f"\n ---- Tool Use Update ----> Agent is using a new query")
                     try:
                         result = self.tools[tool['name']].invoke(tool['args'])
                         num_queries_made += 1
@@ -144,7 +144,7 @@ class Agent:
 
                 # If query already exists, give the model the previous output of this query
                 else:
-                    print(f"\n ---- Tool Use Update ----> query exists\n")
+                    print(f"\n ---- Tool Use Update ----> Query already exists")
                     try:
                         index = int(ai_response.content)
                         result = state['cypher_code_and_query_outputs'][index]['output']
@@ -153,10 +153,11 @@ class Agent:
                         result = "Something is wrong. Please make sure to give me the correct index and not an empty string.\
                             example: 0\
                             another example: None"
+                        print(f"\n ---- Tool Use Update ----> {result}")
             
             ## If no previous queries have been made, query the graph
             else:
-                print(f"\n---- Tool Use Update ----> query is unique\n")
+                print(f"\n---- Tool Use Update ----> Agent is using a new query")
                 try:
                     result = self.tools[tool['name']].invoke(tool['args'])
                     num_queries_made += 1
