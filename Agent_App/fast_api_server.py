@@ -23,9 +23,9 @@ dotenv_path = Path('.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["GROQ_API_KEY"] = os.getenv('GROQ_API_KEY')
 
-os.environ["NEO4J_URI"] = os.getenv('uri')
-os.environ["NEO4J_USERNAME"] = os.getenv('user_name')
-os.environ["NEO4J_PASSWORD"] = os.getenv('password')
+os.environ["NEO4J_URI"] = os.getenv('NEO4J_URI')
+os.environ["NEO4J_USERNAME"] = os.getenv('NEO4J_USERNAME')
+os.environ["NEO4J_PASSWORD"] = os.getenv('NEO4J_PASSWORD')
 graph = Neo4jGraph()
 
 ##############################

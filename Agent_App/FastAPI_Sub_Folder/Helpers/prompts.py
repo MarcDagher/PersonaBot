@@ -12,12 +12,12 @@ ex: MATCH (n:label_1)-[]->(m:label_2) return n,m
 not: MATCH (n:label_1)-[]->(m:label_2) WHERE m.title='whatever' return n,m
 """
 
-output = "Your final output: Interpret all the queried data, choose up to 6 suitable careers for me, list them in bullet points and include a brief explanation of how each path suites my personality. Include Cypher code in your answer."
+output = "Your final output: Interpret all the queried data, choose up to 6 suitable careers for me, list them in bullet points and include a brief explanation of how each path suites my personality. Don't include the Cypher code in your answer."
 
 tone = "Output's tone: Make your output friendly, fun and easy to read."
 
 
-reminder = "Reminder: If Property Values: empty, you will not use 'WHERE' or try to specify property values inside your Cypher code. Under no circumstances should you use 'DELETE'. Find the occupations that suite my character. Make sure to keep your answers concise and straight to the point."
+reminder = "Reminder: When you are writing Cypher, if Property Values: empty, you will not use 'WHERE' or try to specify property values inside your Cypher code. Under no circumstances should you use 'DELETE'. Find the occupations that suite my character. Make sure to keep your answers concise and straight to the point."
 
 personality_scientist_prompt = f"{task}\ {goal}\ {schema_context}\ {property_values}\ {query_approach}\ {output}\ {tone}\ {reminder}"
 
@@ -25,16 +25,17 @@ personality_scientist_prompt = f"{task}\ {goal}\ {schema_context}\ {property_val
 # Prompt given to the model to extract data from the returned query output
 extractor_prompt = "You have now queried the graph.\
             Here is the cypher code you wrote and the returned data: {queried_data}.\
-            Read it, extract everything that is suitable for my character and that you might find useful when recommending careers.\
+            Read it, extract what you find suitable for my character and that you might find useful when recommending careers for me.\
             Return what you extracted from the output in the format of [['Node1','relation_name','Node2']...]  where related nodes are together\
             Note: do not add any explanation, description, analysis or even recommendations. Stick to the format I told you about.\
-            Reminder, please return your output in this the format, I need it like this so that I can plot it: [['Node1','relation_name','Node2']]"
+            Reminder of your output's format format: [['Node1','relation_name','Node2']]\
+            The output has to be a list of lists not a dictionary or anything else."
 
 
 # Prompt given to the model to recommend careers
 recommender_prompt = "You queried the graph and extracted the necessary data from the returned output.\
             Here are the extracted data: {extracted_data}\
-            now use the conversation's history with the extracted data from the returned query to give me suitable career tracks."
+            now use the conversation's history with the extracted data to give me suitable career tracks."
 
 
 # Prompt given to the model to check if query has already been made before

@@ -12,10 +12,8 @@ def display_knowledge_graph_page(session_state):
       cypher_code = session_state.cypher_code_and_query_outputs[i]['cypher_code']
       output = session_state.cypher_code_and_query_outputs[i]['output']
       extracted_data = session_state.extracted_data[i]
-
-      # print(f"\n\n\n---------- In graph page {i}: {type(ast.literal_eval(extracted_data))}")
       
-      # Validate type of the output
+      # Validate the type of the output
       if isinstance(output, str):
         output = ast.literal_eval(output)
 
@@ -26,7 +24,7 @@ def display_knowledge_graph_page(session_state):
                     Knowledge Graph of Agent's Query {i + 2}
                   </h1>""",  unsafe_allow_html=True)
         
-        # Knowledge Graph
+        ## Display returned Knowledge Graph
         try:
           st.markdown(f"""
                       <p>
@@ -39,9 +37,10 @@ def display_knowledge_graph_page(session_state):
           graph = display_knowledge_graph(output)
           st.plotly_chart(graph)
         except:
-          display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected knowledge graph format. ⚠️")
+          display_error_box(text="⚠️ Attempted to draw the graph, but we got an unexpected format. ⚠️")
         
-        # Extracted Data Graph
+        
+        ## Display Extracted Data
         try:
           st.markdown(f"""
                   <h1 style="font-size: 25px; text-align: center; background-color: #F0F2F6; border-radius:5px; padding: 10px; margin-bottom: 20px">
@@ -50,10 +49,14 @@ def display_knowledge_graph_page(session_state):
           
           graph = display_extracted_traits_data(ast.literal_eval(extracted_data))
           st.plotly_chart(graph)
-        except Exception as e:
-          display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected format. ⚠️")
+        except:
+          try:
+            graph = display_extracted_traits_data(ast.literal_eval(extracted_data['content']))
+            st.plotly_chart(graph)
+          except:
+            display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected format. ⚠️")
 
-      # If output is empty
+      # If graph's output is empty
       else:
         display_error_box(text="⚠️ Agent used the graph but the output is empty ⚠️")
 
