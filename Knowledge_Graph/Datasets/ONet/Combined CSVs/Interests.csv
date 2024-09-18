@@ -1,0 +1,1078 @@
+Interest Code,Job Zone,Occupation
+CSR,1,Amusement and Recreation Attendants
+RCS,1,Baristas
+RCS,1,Dining Room and Cafeteria Attendants and Bartender Helpers
+SCA,2,Childcare Workers
+SRC,2,Home Health Aides
+SEC,2,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop"
+SA,2,Nannies
+SCR,2,Personal Care Aides
+SRC,2,Physical Therapist Aides
+SIC,2,Psychiatric Aides
+SCR,2,School Bus Monitors
+SEC,2,Travel Guides
+SCE,2,"Ushers, Lobby Attendants, and Ticket Takers"
+SCE,2,Waiters and Waitresses
+RSC,2,Animal Caretakers
+RS,2,Animal Trainers
+RSC,2,"Food Servers, Nonrestaurant"
+RSC,2,Funeral Attendants
+CSE,2,"Hotel, Motel, and Resort Desk Clerks"
+RSC,2,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers"
+CS,2,Medical Secretaries and Administrative Assistants
+CSR,2,Passenger Attendants
+RSC,2,Shampooers
+SIR,3,Acute Care Nurses
+SI,3,"Career/Technical Education Teachers, Postsecondary"
+SEC,3,Concierges
+SRI,3,Dental Hygienists
+SRC,3,Dietetic Technicians
+SRI,3,Emergency Medical Technicians
+SR,3,Exercise Trainers and Group Fitness Instructors
+SIC,3,Hearing Aid Specialists
+SRC,3,Licensed Practical and Licensed Vocational Nurses
+SRI,3,Massage Therapists
+SRC,3,Nursing Assistants
+SRC,3,Occupational Therapy Aides
+SCR,3,Occupational Therapy Assistants
+SRI,3,Paramedics
+SIC,3,Patient Representatives
+SRC,3,Physical Therapist Assistants
+SA,3,"Preschool Teachers, Except Special Education"
+SI,3,Psychiatric Technicians
+SCE,3,Residential Advisors
+SRI,3,Respiratory Therapists
+SA,3,Self-Enrichment Teachers
+SCI,3,Speech-Language Pathology Assistants
+SC,3,"Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+SC,3,"Teaching Assistants, Special Education"
+SE,3,Tour Guides and Escorts
+S,3,Tutors
+S,4,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors"
+S,4,"Career/Technical Education Teachers, Middle School"
+S,4,"Career/Technical Education Teachers, Secondary School"
+S,4,"Child, Family, and School Social Workers"
+SER,4,Coaches and Scouts
+S,4,Community Health Workers
+SIR,4,Critical Care Nurses
+SE,4,"Directors, Religious Activities and Education"
+SEC,4,"Education and Childcare Administrators, Preschool and Daycare"
+SA,4,"Elementary School Teachers, Except Special Education"
+SE,4,Fitness and Wellness Coordinators
+SIC,4,Health Education Specialists
+SA,4,"Kindergarten Teachers, Except Special Education"
+SA,4,"Middle School Teachers, Except Special and Career/Technical Education"
+SAI,4,Music Therapists
+SIR,4,Park Naturalists
+SCE,4,Probation Officers and Correctional Treatment Specialists
+SER,4,Recreation Workers
+SI,4,Recreational Therapists
+SIC,4,Registered Nurses
+S,4,Rehabilitation Counselors
+S,4,"Secondary School Teachers, Except Special and Career/Technical Education"
+SCE,4,Social and Human Service Assistants
+SI,4,"Special Education Teachers, Elementary School"
+S,4,"Special Education Teachers, Kindergarten"
+SIA,4,"Special Education Teachers, Middle School"
+SI,4,"Special Education Teachers, Secondary School"
+SC,4,"Substitute Teachers, Short-Term"
+SCI,4,Training and Development Specialists
+SIR,5,Acupuncturists
+SR,5,Adapted Physical Education Specialists
+SI,5,"Agricultural Sciences Teachers, Postsecondary"
+SCI,5,Anesthesiologist Assistants
+SI,5,"Anthropology and Archeology Teachers, Postsecondary"
+SIA,5,"Architecture Teachers, Postsecondary"
+SI,5,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary"
+SA,5,Art Therapists
+SA,5,"Art, Drama, and Music Teachers, Postsecondary"
+SRI,5,Athletic Trainers
+SI,5,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary"
+SI,5,"Biological Science Teachers, Postsecondary"
+SI,5,"Business Teachers, Postsecondary"
+SRI,5,Chiropractors
+SE,5,Clergy
+SI,5,Clinical and Counseling Psychologists
+SIC,5,Clinical Nurse Specialists
+SI,5,"Communications Teachers, Postsecondary"
+SIC,5,"Computer Science Teachers, Postsecondary"
+SI,5,"Criminal Justice and Law Enforcement Teachers, Postsecondary"
+SI,5,Dietitians and Nutritionists
+SI,5,"Economics Teachers, Postsecondary"
+SEC,5,"Education Administrators, Kindergarten through Secondary"
+SEC,5,"Education Administrators, Postsecondary"
+SI,5,"Education Teachers, Postsecondary"
+SE,5,"Educational, Guidance, and Career Counselors and Advisors"
+SIR,5,"Engineering Teachers, Postsecondary"
+SIA,5,"English Language and Literature Teachers, Postsecondary"
+SI,5,"Environmental Science Teachers, Postsecondary"
+SI,5,"Family and Consumer Sciences Teachers, Postsecondary"
+SI,5,Family Medicine Physicians
+SIR,5,Farm and Home Management Educators
+SI,5,"Foreign Language and Literature Teachers, Postsecondary"
+SI,5,"Forestry and Conservation Science Teachers, Postsecondary"
+SI,5,"Geography Teachers, Postsecondary"
+SI,5,"Health Specialties Teachers, Postsecondary"
+SI,5,Healthcare Social Workers
+SI,5,"History Teachers, Postsecondary"
+SIC,5,Hospitalists
+SEC,5,Instructional Coordinators
+SI,5,"Law Teachers, Postsecondary"
+SI,5,"Library Science Teachers, Postsecondary"
+SRI,5,"Low Vision Therapists, Orientation and Mobility Specialists, and Vision Rehabilitation Therapists"
+SI,5,Marriage and Family Therapists
+SIC,5,"Mathematical Science Teachers, Postsecondary"
+SI,5,Mental Health and Substance Abuse Social Workers
+SI,5,Mental Health Counselors
+SIR,5,Midwives
+SRI,5,Nurse Anesthetists
+SI,5,Nurse Midwives
+SI,5,"Nursing Instructors and Teachers, Postsecondary"
+SI,5,Occupational Therapists
+SI,5,"Pediatricians, General"
+SI,5,"Philosophy and Religion Teachers, Postsecondary"
+SIR,5,Physical Therapists
+SIC,5,Physician Assistants
+SI,5,"Physics Teachers, Postsecondary"
+SI,5,"Political Science Teachers, Postsecondary"
+SI,5,"Psychology Teachers, Postsecondary"
+SI,5,"Recreation and Fitness Studies Teachers, Postsecondary"
+SIC,5,School Psychologists
+SI,5,"Social Work Teachers, Postsecondary"
+SI,5,"Sociology Teachers, Postsecondary"
+SA,5,"Special Education Teachers, Preschool"
+SIC,5,Speech-Language Pathologists
+SIC,5,Substance Abuse and Behavioral Disorder Counselors
+SC,5,"Teaching Assistants, Postsecondary"
+RC,1,Agricultural Equipment Operators
+RCS,1,Baristas
+RC,1,Cement Masons and Concrete Finishers
+RC,1,Conveyor Operators and Tenders
+RCE,1,"Cooks, Fast Food"
+RC,1,"Cutters and Trimmers, Hand"
+RC,1,"Derrick Operators, Oil and Gas"
+RCS,1,Dining Room and Cafeteria Attendants and Bartender Helpers
+RC,1,Dishwashers
+RC,1,Fallers
+RC,1,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse"
+RCE,1,Fast Food and Counter Workers
+RC,1,Fishing and Hunting Workers
+RC,1,Floor Sanders and Finishers
+RC,1,Food Preparation Workers
+RC,1,"Graders and Sorters, Agricultural Products"
+RC,1,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons"
+RC,1,Landscaping and Groundskeeping Workers
+RC,1,Laundry and Dry-Cleaning Workers
+RC,1,Logging Equipment Operators
+RC,1,Maids and Housekeeping Cleaners
+RC,1,"Meat, Poultry, and Fish Cutters and Trimmers"
+RAC,1,"Painting, Coating, and Decorating Workers"
+RC,1,Plasterers and Stucco Masons
+RC,1,"Pressers, Textile, Garment, and Related Materials"
+RC,1,"Rock Splitters, Quarry"
+RC,1,"Roustabouts, Oil and Gas"
+RC,1,Septic Tank Servicers and Sewer Pipe Cleaners
+RC,1,Sewing Machine Operators
+RC,2,Adhesive Bonding Machine Operators and Tenders
+RCI,2,Agricultural Inspectors
+RC,2,Aircraft Service Attendants
+RC,2,"Aircraft Structure, Surfaces, Rigging, and Systems Assemblers"
+RSC,2,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians"
+RC,2,Animal Breeders
+RSC,2,Animal Caretakers
+RCI,2,Animal Control Workers
+RS,2,Animal Trainers
+RES,2,Athletes and Sports Competitors
+RC,2,Automotive and Watercraft Service Attendants
+RC,2,Automotive Body and Related Repairers
+RC,2,Automotive Glass Installers and Repairers
+RCS,2,Baggage Porters and Bellhops
+RC,2,Bakers
+RCE,2,Bartenders
+RC,2,Bicycle Repairers
+RCI,2,Biofuels Processing Technicians
+RC,2,Biomass Plant Technicians
+RC,2,Brickmasons and Blockmasons
+RC,2,Bridge and Lock Tenders
+RCS,2,"Bus Drivers, School"
+RCS,2,"Bus Drivers, Transit and Intercity"
+RC,2,Butchers and Meat Cutters
+RC,2,Cabinetmakers and Bench Carpenters
+RC,2,Carpenters
+RC,2,Carpet Installers
+RCI,2,Chemical Equipment Operators and Tenders
+RCI,2,Chemical Plant and System Operators
+RC,2,Cleaners of Vehicles and Equipment
+RC,2,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders"
+RC,2,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders"
+RC,2,"Coil Winders, Tapers, and Finishers"
+RC,2,"Coin, Vending, and Amusement Machine Servicers and Repairers"
+RC,2,Computer Numerically Controlled Tool Operators
+RC,2,Construction Laborers
+RC,2,Continuous Mining Machine Operators
+RC,2,"Cooks, Institution and Cafeteria"
+RCE,2,"Cooks, Restaurant"
+RCE,2,"Cooks, Short Order"
+RC,2,Cooling and Freezing Equipment Operators and Tenders
+RCS,2,Correctional Officers and Jailers
+RC,2,Crematory Operators
+RC,2,Crossing Guards and Flaggers
+RC,2,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders"
+RC,2,"Cutting and Slicing Machine Setters, Operators, and Tenders"
+RC,2,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic"
+RIC,2,Dental Laboratory Technicians
+RC,2,Dredge Operators
+RC,2,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+RCE,2,Driver/Sales Workers
+RC,2,Drywall and Ceiling Tile Installers
+RCI,2,"Earth Drillers, Except Oil and Gas"
+RCI,2,Electrical and Electronic Equipment Assemblers
+RC,2,Electrical Power-Line Installers and Repairers
+RCI,2,Electromechanical Equipment Assemblers
+RCI,2,Endoscopy Technicians
+RC,2,Engine and Other Machine Assemblers
+RCA,2,Etchers and Engravers
+RC,2,"Excavating and Loading Machine and Dragline Operators, Surface Mining"
+RCI,2,"Explosives Workers, Ordnance Handling Experts, and Blasters"
+RC,2,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers"
+RC,2,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders"
+R,2,"Farmworkers, Farm, Ranch, and Aquacultural Animals"
+RC,2,Fence Erectors
+RC,2,Fiberglass Laminators and Fabricators
+RC,2,"Floor Layers, Except Carpet, Wood, and Hard Tiles"
+RAC,2,Floral Designers
+RC,2,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders"
+RC,2,Food Batchmakers
+RC,2,Food Cooking Machine Operators and Tenders
+RSC,2,"Food Servers, Nonrestaurant"
+RC,2,Forest and Conservation Workers
+RC,2,"Forging Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,Foundry Mold and Coremakers
+RSC,2,Funeral Attendants
+RC,2,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders"
+RCA,2,Furniture Finishers
+RC,2,Gas Compressor and Gas Pumping Station Operators
+RC,2,Gas Plant Operators
+RCI,2,Geothermal Technicians
+RC,2,"Glass Blowers, Molders, Benders, and Finishers"
+RC,2,Glaziers
+RC,2,"Grinding and Polishing Workers, Hand"
+RC,2,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,Heavy and Tractor-Trailer Truck Drivers
+RC,2,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+RC,2,Helpers--Carpenters
+RC,2,Helpers--Electricians
+RC,2,Helpers--Extraction Workers
+RC,2,"Helpers--Installation, Maintenance, and Repair Workers"
+RC,2,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters"
+RC,2,Helpers--Production Workers
+RC,2,Helpers--Roofers
+RC,2,Highway Maintenance Workers
+RC,2,Hoist and Winch Operators
+RC,2,Home Appliance Repairers
+RC,2,Industrial Truck and Tractor Operators
+RCI,2,"Inspectors, Testers, Sorters, Samplers, and Weighers"
+RC,2,"Insulation Workers, Floor, Ceiling, and Wall"
+RC,2,"Insulation Workers, Mechanical"
+RC,2,"Laborers and Freight, Stock, and Material Movers, Hand"
+RC,2,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,"Layout Workers, Metal and Plastic"
+RSC,2,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers"
+RC,2,Light Truck Drivers
+RC,2,"Loading and Moving Machine Operators, Underground Mining"
+RC,2,Locksmiths and Safe Repairers
+RCI,2,Locomotive Engineers
+RC,2,Machine Feeders and Offbearers
+RC,2,Manicurists and Pedicurists
+RC,2,Manufactured Building and Mobile Home Installers
+RC,2,Mechanical Door Repairers
+RCI,2,Medical Equipment Preparers
+RC,2,Metal-Refining Furnace Operators and Tenders
+RC,2,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,Millwrights
+RC,2,"Mixing and Blending Machine Setters, Operators, and Tenders"
+RC,2,"Molders, Shapers, and Casters, Except Metal and Plastic"
+RC,2,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,Motion Picture Projectionists
+RCE,2,Motorboat Operators
+RC,2,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+RIC,2,Non-Destructive Testing Specialists
+RCI,2,Operating Engineers and Other Construction Equipment Operators
+RC,2,Ophthalmic Laboratory Technicians
+RCS,2,Orderlies
+RC,2,Outdoor Power Equipment and Other Small Engine Mechanics
+RC,2,Packaging and Filling Machine Operators and Tenders
+RC,2,"Painters, Construction and Maintenance"
+RC,2,"Paper Goods Machine Setters, Operators, and Tenders"
+RCA,2,Paperhangers
+RC,2,Parking Attendants
+RC,2,Parking Enforcement Workers
+RC,2,"Paving, Surfacing, and Tamping Equipment Operators"
+RC,2,Pest Control Workers
+RC,2,"Pesticide Handlers, Sprayers, and Applicators, Vegetation"
+RC,2,"Petroleum Pump System Operators, Refinery Operators, and Gaugers"
+RCA,2,Photographic Process Workers and Processing Machine Operators
+RC,2,Pile Driver Operators
+RC,2,Pipelayers
+RC,2,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,"Pourers and Casters, Metal"
+RC,2,Power Plant Operators
+RC,2,Print Binding and Finishing Workers
+RC,2,"Pump Operators, Except Wellhead Pumpers"
+RC,2,Rail Car Repairers
+RC,2,"Rail Yard Engineers, Dinkey Operators, and Hostlers"
+RC,2,Rail-Track Laying and Maintenance Equipment Operators
+RC,2,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers"
+RCE,2,Railroad Conductors and Yardmasters
+RC,2,Recreational Vehicle Service Technicians
+RC,2,Recycling and Reclamation Workers
+RC,2,"Refractory Materials Repairers, Except Brickmasons"
+RC,2,Refuse and Recyclable Material Collectors
+RC,2,Reinforcing Iron and Rebar Workers
+RC,2,Riggers
+RC,2,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic"
+RC,2,"Roof Bolters, Mining"
+RC,2,Roofers
+RC,2,"Rotary Drill Operators, Oil and Gas"
+RC,2,Sailors and Marine Oilers
+RC,2,"Sawing Machine Setters, Operators, and Tenders, Wood"
+RC,2,Security Guards
+RC,2,Segmental Pavers
+RC,2,Semiconductor Processing Technicians
+RC,2,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders"
+RC,2,"Service Unit Operators, Oil and Gas"
+RCA,2,"Sewers, Hand"
+RSC,2,Shampooers
+RC,2,Sheet Metal Workers
+RA,2,Shoe and Leather Workers and Repairers
+RC,2,Shoe Machine Operators and Tenders
+RCS,2,Shuttle Drivers and Chauffeurs
+RC,2,Slaughterers and Meat Packers
+RC,2,Solar Photovoltaic Installers
+RAC,2,"Stone Cutters and Carvers, Manufacturing"
+RC,2,Structural Iron and Steel Workers
+RC,2,Subway and Streetcar Operators
+RA,2,"Tailors, Dressmakers, and Custom Sewers"
+RC,2,"Tank Car, Truck, and Ship Loaders"
+RC,2,Tapers
+RC,2,Taxi Drivers
+RCE,2,Team Assemblers
+RC,2,Telecommunications Line Installers and Repairers
+RC,2,Terrazzo Workers and Finishers
+RC,2,Textile Bleaching and Dyeing Machine Operators and Tenders
+RC,2,"Textile Cutting Machine Setters, Operators, and Tenders"
+RC,2,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders"
+RC,2,"Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders"
+RC,2,Tile and Stone Setters
+RC,2,Timing Device Assemblers and Adjusters
+RC,2,Tire Builders
+RC,2,Tire Repairers and Changers
+RC,2,"Tool Grinders, Filers, and Sharpeners"
+RCI,2,"Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation"
+RC,2,Tree Trimmers and Pruners
+RAC,2,Upholsterers
+RIC,2,Veterinary Assistants and Laboratory Animal Caretakers
+RC,2,Weatherization Installers and Technicians
+RC,2,"Welders, Cutters, Solderers, and Brazers"
+RC,2,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders"
+RC,2,Wellhead Pumpers
+RC,2,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing"
+RCI,3,Aerospace Engineering and Operations Technologists and Technicians
+RIC,3,Agricultural Technicians
+RCI,3,Aircraft Mechanics and Service Technicians
+RCA,3,Architectural and Civil Drafters
+RC,3,Audio and Video Technicians
+RC,3,Audiovisual Equipment Installers and Repairers
+RIC,3,Automotive Engineering Technicians
+RCI,3,Automotive Service Technicians and Mechanics
+RCI,3,Avionics Technicians
+RCE,3,Bailiffs
+RCE,3,Barbers
+RC,3,Boilermakers
+RCI,3,Bus and Truck Mechanics and Diesel Engine Specialists
+RCI,3,Calibration Technologists and Technicians
+RC,3,Camera and Photographic Equipment Repairers
+RCE,3,"Captains, Mates, and Pilots of Water Vessels"
+RIC,3,Cardiovascular Technologists and Technicians
+RIC,3,Civil Engineering Technologists and Technicians
+RIC,3,Commercial Divers
+RCE,3,Commercial Pilots
+RC,3,"Computer, Automated Teller, and Office Machine Repairers"
+RCI,3,Construction and Building Inspectors
+RC,3,"Control and Valve Installers and Repairers, Except Mechanical Door"
+RCS,3,"Cooks, Private Household"
+RC,3,Crane and Tower Operators
+RCI,3,Diagnostic Medical Sonographers
+RC,3,"Electric Motor, Power Tool, and Related Repairers"
+RIC,3,Electrical and Electronic Engineering Technologists and Technicians
+RC,3,Electrical and Electronics Drafters
+RCI,3,"Electrical and Electronics Installers and Repairers, Transportation Equipment"
+RCI,3,"Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+RCI,3,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay"
+RC,3,Electricians
+RCI,3,Electro-Mechanical and Mechatronics Technologists and Technicians
+RCI,3,"Electronic Equipment Installers and Repairers, Motor Vehicles"
+RC,3,Elevator and Escalator Installers and Repairers
+RCS,3,Embalmers
+RAC,3,Fabric and Apparel Patternmakers
+RCI,3,Farm Equipment Mechanics and Service Technicians
+RCI,3,Fire Inspectors and Investigators
+R,3,Firefighters
+RCI,3,Food Science Technicians
+RCI,3,Forest and Conservation Technicians
+RC,3,Forest Fire Inspectors and Prevention Specialists
+RC,3,Gem and Diamond Workers
+RCE,3,Geothermal Production Managers
+RCS,3,"Hairdressers, Hairstylists, and Cosmetologists"
+RC,3,Hazardous Materials Removal Workers
+RC,3,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+RIC,3,Histology Technicians
+RCI,3,Hydroelectric Plant Technicians
+RCE,3,Hydroelectric Production Managers
+RCI,3,Hydrologic Technicians
+RCI,3,Industrial Engineering Technologists and Technicians
+RCI,3,Industrial Machinery Mechanics
+RC,3,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners"
+RAC,3,Jewelers and Precious Stone and Metal Workers
+RC,3,Lighting Technicians
+RCI,3,Machinists
+RCI,3,Magnetic Resonance Imaging Technologists
+RC,3,"Maintenance and Repair Workers, General"
+RC,3,"Maintenance Workers, Machinery"
+RCI,3,Mechanical Drafters
+RIC,3,Mechanical Engineering Technologists and Technicians
+RIC,3,Medical and Clinical Laboratory Technicians
+RIC,3,Medical Appliance Technicians
+RCI,3,Medical Equipment Repairers
+RCI,3,"Mobile Heavy Equipment Mechanics, Except Engines"
+RC,3,"Model Makers, Metal and Plastic"
+RCA,3,"Model Makers, Wood"
+RC,3,Motorboat Mechanics and Service Technicians
+RCI,3,Motorcycle Mechanics
+RAC,3,Musical Instrument Repairers and Tuners
+RIC,3,Nuclear Medicine Technologists
+RCI,3,Nuclear Monitoring Technicians
+RC,3,Nuclear Power Reactor Operators
+RCI,3,Nuclear Technicians
+RCI,3,Occupational Health and Safety Technicians
+RCI,3,Ophthalmic Medical Technicians
+RIC,3,Ophthalmic Medical Technologists
+RCA,3,"Patternmakers, Metal and Plastic"
+RCA,3,"Patternmakers, Wood"
+RCI,3,Phlebotomists
+RA,3,Photographers
+RCI,3,Photonics Technicians
+RC,3,"Plumbers, Pipefitters, and Steamfitters"
+RCE,3,Police and Sheriff's Patrol Officers
+RC,3,"Potters, Manufacturing"
+RC,3,Power Distributors and Dispatchers
+RIC,3,Precision Agriculture Technicians
+RSI,3,Radiation Therapists
+RCI,3,"Radio, Cellular, and Tower Equipment Installers and Repairers"
+RCI,3,Radiologic Technologists and Technicians
+RCI,3,Robotics Technicians
+RCI,3,Security and Fire Alarm Systems Installers
+RCE,3,Ship Engineers
+RC,3,Signal and Track Switch Repairers
+RS,3,Skincare Specialists
+REC,3,Solar Energy Installation Managers
+RC,3,Solar Thermal Installers and Technicians
+RAC,3,Sound Engineering Technicians
+RCI,3,Stationary Engineers and Boiler Operators
+R,3,Stonemasons
+RC,3,Structural Metal Fabricators and Fitters
+RCS,3,Surgical Assistants
+RCS,3,Surgical Technologists
+RCI,3,Surveying and Mapping Technicians
+RC,3,"Telecommunications Equipment Installers and Repairers, Except Line Installers"
+RC,3,Tool and Die Makers
+RCI,3,Traffic Technicians
+RC,3,Transit and Railroad Police
+RIC,3,Veterinary Technologists and Technicians
+RC,3,Watch and Clock Repairers
+RC,3,Water and Wastewater Treatment Plant and System Operators
+RCI,3,Wind Turbine Service Technicians
+RCE,4,"Airline Pilots, Copilots, and Flight Engineers"
+RIC,4,Automotive Engineers
+RIC,4,Biological Technicians
+RIC,4,Chemical Engineers
+RIC,4,Civil Engineers
+RIC,4,Computer Hardware Engineers
+RIC,4,Electrical Engineers
+RIC,4,"Electronics Engineers, Except Computer"
+RIC,4,"Energy Engineers, Except Wind and Solar"
+RIC,4,Environmental Engineering Technologists and Technicians
+RIS,4,Exercise Physiologists
+RIC,4,Fire-Prevention and Protection Engineers
+RCI,4,Fish and Game Wardens
+RIC,4,Foresters
+RIC,4,Fuel Cell Engineers
+RCI,4,Geodetic Surveyors
+RCI,4,"Geological Technicians, Except Hydrologic Technicians"
+RIA,4,Landscape Architects
+RIC,4,Manufacturing Engineers
+RIC,4,Marine Engineers and Naval Architects
+RIC,4,Materials Engineers
+RIC,4,Mechanical Engineers
+RIC,4,Mechatronics Engineers
+RIC,4,"Mining and Geological Engineers, Including Mining Safety Engineers"
+RC,4,Museum Technicians and Conservators
+RIC,4,Nanotechnology Engineering Technologists and Technicians
+RIC,4,Petroleum Engineers
+RIE,4,Range Managers
+RCI,4,Remote Sensing Technicians
+RIC,4,Robotics Engineers
+RIC,4,Solar Energy Systems Engineers
+RIC,4,Transportation Engineers
+RIC,4,Water/Wastewater Engineers
+RIC,4,Wind Energy Engineers
+RAI,5,"Architects, Except Landscape and Naval"
+RIS,5,Orthotists and Prosthetists
+RIS,5,Prosthodontists
+RI,5,Veterinarians
+SR,5,Adapted Physical Education Specialists
+IR,5,Anthropologists and Archeologists
+IR,5,Astronomers
+SRI,5,Athletic Trainers
+SRI,5,Chiropractors
+IRC,5,Cytotechnologists
+IRS,5,"Dentists, General"
+IRS,5,Dermatologists
+IRC,5,Environmental Restoration Planners
+IRC,5,"Geoscientists, Except Hydrologists and Geographers"
+IRC,5,Human Factors Engineers and Ergonomists
+IRC,5,Microsystems Engineers
+SRI,5,Nurse Anesthetists
+IRC,5,Orthodontists
+IRS,5,"Orthopedic Surgeons, Except Pediatric"
+IR,5,Soil and Plant Scientists
+RIC,2,Dental Laboratory Technicians
+RIC,2,Non-Destructive Testing Specialists
+SIC,2,Psychiatric Aides
+RIC,2,Veterinary Assistants and Laboratory Animal Caretakers
+RCI,2,Agricultural Inspectors
+RCI,2,Animal Control Workers
+RCI,2,Biofuels Processing Technicians
+RCI,2,Chemical Equipment Operators and Tenders
+RCI,2,Chemical Plant and System Operators
+RCI,2,"Earth Drillers, Except Oil and Gas"
+RCI,2,Electrical and Electronic Equipment Assemblers
+RCI,2,Electromechanical Equipment Assemblers
+RCI,2,Endoscopy Technicians
+RCI,2,"Explosives Workers, Ordnance Handling Experts, and Blasters"
+RCI,2,Geothermal Technicians
+RCI,2,"Inspectors, Testers, Sorters, Samplers, and Weighers"
+RCI,2,Locomotive Engineers
+RCI,2,Medical Equipment Preparers
+RCI,2,Operating Engineers and Other Construction Equipment Operators
+RCI,2,"Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation"
+IRC,3,Chemical Technicians
+IC,3,Computer Systems Analysts
+ICR,3,Coroners
+ICR,3,Detectives and Criminal Investigators
+ICR,3,Forensic Science Technicians
+ICR,3,Medical Dosimetrists
+IRC,3,Neurodiagnostic Technologists
+RIC,3,Cardiovascular Technologists and Technicians
+RIC,3,Civil Engineering Technologists and Technicians
+RIC,3,Commercial Divers
+RIC,3,Electrical and Electronic Engineering Technologists and Technicians
+CIS,3,Health Information Technologists and Medical Registrars
+SIC,3,Hearing Aid Specialists
+RIC,3,Medical Appliance Technicians
+CIE,3,Paralegals and Legal Assistants
+RIC,3,Precision Agriculture Technicians
+SI,3,Psychiatric Technicians
+CIR,3,Quality Control Analysts
+RIC,3,Veterinary Technologists and Technicians
+CI,3,Web Developers
+IRC,4,Aerospace Engineers
+IRC,4,Agricultural Engineers
+IRC,4,Atmospheric and Space Scientists
+IR,4,Bioengineers and Biomedical Engineers
+IER,4,Biofuels/Biodiesel Technology and Product Development Managers
+ICR,4,Bioinformatics Technicians
+IRC,4,Chemists
+ICE,4,Clinical Research Coordinators
+ICR,4,Computer Network Architects
+ICR,4,Computer Systems Engineers/Architects
+IRC,4,Conservation Scientists
+IRC,4,Cytogenetic Technologists
+IC,4,Data Scientists
+IC,4,Digital Forensics Analysts
+IRC,4,Environmental Engineers
+IRC,4,"Environmental Science and Protection Technicians, Including Health"
+IRC,4,"Environmental Scientists and Specialists, Including Health"
+IRC,4,Food Scientists and Technologists
+IR,4,Geographers
+IRC,4,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors"
+ICS,4,Health Informatics Specialists
+IRC,4,Histotechnologists
+IC,4,Intelligence Analysts
+IRC,4,Medical and Clinical Laboratory Technologists
+IRC,4,Nuclear Engineers
+ICR,4,Occupational Health and Safety Specialists
+ICR,4,Penetration Testers
+IRC,4,Photonics Engineers
+IRC,4,Remote Sensing Scientists and Technologists
+IC,4,Social Science Research Assistants
+ICR,4,Software Developers
+ICR,4,Software Quality Assurance Analysts and Testers
+IEC,4,Sustainability Specialists
+IC,4,Transportation Planners
+ICR,4,Validation Engineers
+IRC,4,Water Resource Specialists
+IAC,4,Web and Digital Interface Designers
+IR,4,Zoologists and Wildlife Biologists
+IS,5,Advanced Practice Psychiatric Nurses
+ISR,5,Allergists and Immunologists
+ISR,5,Anesthesiologists
+IR,5,Animal Scientists
+IR,5,Anthropologists and Archeologists
+IR,5,Astronomers
+ISC,5,Audiologists
+IR,5,Biochemists and Biophysicists
+ICR,5,Bioinformatics Scientists
+ICR,5,Biologists
+IC,5,Biostatisticians
+IRS,5,Cardiologists
+IS,5,"Chemistry Teachers, Postsecondary"
+IEC,5,Climate Change Policy Analysts
+IS,5,Clinical Neuropsychologists
+ICR,5,Computer and Information Research Scientists
+IRC,5,Cytotechnologists
+IRS,5,"Dentists, General"
+IRS,5,Dermatologists
+ICE,5,Economists
+ISC,5,Emergency Medicine Physicians
+IEC,5,Environmental Economists
+IRC,5,Environmental Restoration Planners
+IS,5,Epidemiologists
+IC,5,Financial Quantitative Analysts
+ISR,5,General Internal Medicine Physicians
+ISC,5,Genetic Counselors
+ICR,5,Geneticists
+IRC,5,"Geoscientists, Except Hydrologists and Geographers"
+IC,5,Historians
+IRC,5,Human Factors Engineers and Ergonomists
+IRC,5,Hydrologists
+IRC,5,Industrial Ecologists
+IES,5,Industrial-Organizational Psychologists
+IRC,5,Materials Scientists
+IC,5,Mathematicians
+IRC,5,"Medical Scientists, Except Epidemiologists"
+IRC,5,Microbiologists
+IRC,5,Microsystems Engineers
+IRC,5,Molecular and Cellular Biologists
+IRC,5,Nanosystems Engineers
+IEC,5,Natural Sciences Managers
+ISR,5,Naturopathic Physicians
+IS,5,Neurologists
+IS,5,Neuropsychologists
+ISC,5,Nurse Practitioners
+ISR,5,Obstetricians and Gynecologists
+IC,5,Operations Research Analysts
+ISR,5,"Ophthalmologists, Except Pediatric"
+ISR,5,Optometrists
+IRS,5,Oral and Maxillofacial Surgeons
+IRC,5,Orthodontists
+IRS,5,"Orthopedic Surgeons, Except Pediatric"
+IRS,5,Orthoptists
+ISR,5,Pediatric Surgeons
+ISC,5,Pharmacists
+ISR,5,Physical Medicine and Rehabilitation Physicians
+IRC,5,"Physicians, Pathologists"
+IRC,5,Physicists
+IRS,5,Podiatrists
+IA,5,Political Scientists
+IS,5,Preventive Medicine Physicians
+IS,5,Psychiatrists
+ICR,5,Radiologists
+ISA,5,Sociologists
+IR,5,Soil and Plant Scientists
+ISR,5,Sports Medicine Physicians
+IC,5,Statisticians
+IC,5,Survey Researchers
+IEC,5,Urban and Regional Planners
+IRS,5,Urologists
+ECR,1,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers"
+RCE,1,"Cooks, Fast Food"
+RCE,1,Fast Food and Counter Workers
+ECR,2,Aircraft Cargo Handling Supervisors
+EC,2,Demonstrators and Product Promoters
+ERC,2,Farm Labor Contractors
+ECS,2,"First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services"
+ECR,2,First-Line Supervisors of Food Preparation and Serving Workers
+ECR,2,First-Line Supervisors of Gambling Services Workers
+ECR,2,"First-Line Supervisors of Helpers, Laborers, and Material Movers, Hand"
+ECR,2,First-Line Supervisors of Housekeeping and Janitorial Workers
+ECS,2,First-Line Supervisors of Retail Sales Workers
+ECR,2,First-Line Supervisors of Security Workers
+ECR,2,Food Service Managers
+EC,2,Gambling Managers
+ECS,2,Postmasters and Mail Superintendents
+ECR,2,Recycling Coordinators
+EC,2,Retail Salespersons
+ECS,2,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel"
+ECS,2,Telemarketers
+ECR,2,"Umpires, Referees, and Other Sports Officials"
+SEC,2,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop"
+SEC,2,Travel Guides
+ECS,3,Administrative Services Managers
+ERC,3,Chefs and Head Cooks
+ECR,3,Facilities Managers
+ECR,3,First-Line Supervisors of Construction Trades and Extraction Workers
+ECS,3,First-Line Supervisors of Correctional Officers
+ERC,3,"First-Line Supervisors of Farming, Fishing, and Forestry Workers"
+ERC,3,First-Line Supervisors of Firefighting and Prevention Workers
+ECR,3,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+ERC,3,First-Line Supervisors of Material-Moving Machine and Vehicle Operators
+ECR,3,"First-Line Supervisors of Mechanics, Installers, and Repairers"
+ECS,3,First-Line Supervisors of Office and Administrative Support Workers
+ECS,3,First-Line Supervisors of Passenger Attendants
+ECS,3,First-Line Supervisors of Personal Service Workers
+ECS,3,First-Line Supervisors of Police and Detectives
+ECR,3,First-Line Supervisors of Production and Operating Workers
+ECS,3,Funeral Home Managers
+ECS,3,Real Estate Sales Agents
+ECR,3,Solar Sales Representatives and Assessors
+ECS,3,Spa Managers
+ECS,3,Travel Agents
+ECR,3,"Wholesale and Retail Buyers, Except Farm Products"
+ECR,3,Wind Energy Operations Managers
+CE,3,Compliance Officers
+CE,3,Customs Brokers
+CE,3,Government Property Inspectors and Investigators
+CEI,3,Private Detectives and Investigators
+SE,3,Tour Guides and Escorts
+ECA,4,Advertising and Promotions Managers
+ECA,4,Advertising Sales Agents
+ESC,4,"Agents and Business Managers of Artists, Performers, and Athletes"
+ECR,4,Biofuels Production Managers
+ECI,4,Business Continuity Planners
+ECR,4,"Buyers and Purchasing Agents, Farm Products"
+ECS,4,Compensation and Benefits Managers
+ECR,4,Construction Managers
+ECI,4,Emergency Management Directors
+ECR,4,"Entertainment and Recreation Managers, Except Gambling"
+ECS,4,Equal Opportunity Representatives and Officers
+ERC,4,"Farmers, Ranchers, and Other Agricultural Managers"
+EC,4,Financial Managers
+ECS,4,First-Line Supervisors of Non-Retail Sales Workers
+ESC,4,Fundraisers
+ECS,4,Fundraising Managers
+EC,4,General and Operations Managers
+ECS,4,Human Resources Managers
+ECS,4,Human Resources Specialists
+ECR,4,Industrial Production Managers
+ECI,4,Information Technology Project Managers
+ECS,4,Insurance Sales Agents
+ECS,4,Labor Relations Specialists
+ESC,4,Legislators
+ECS,4,Lodging Managers
+ECI,4,Market Research Analysts and Marketing Specialists
+EC,4,Marketing Managers
+ECA,4,Media Programming Directors
+ECR,4,Media Technical Directors/Managers
+ECS,4,Medical and Health Services Managers
+ECS,4,"Meeting, Convention, and Event Planners"
+ECS,4,Personal Financial Advisors
+EC,4,Project Management Specialists
+EC,4,"Property, Real Estate, and Community Association Managers"
+ECS,4,Public Relations Managers
+EAS,4,Public Relations Specialists
+EC,4,Purchasing Managers
+EC,4,Real Estate Brokers
+EC,4,Regulatory Affairs Managers
+EC,4,Sales Engineers
+EC,4,Sales Managers
+EC,4,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products"
+EC,4,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products"
+ECI,4,Search Marketing Strategists
+EC,4,"Securities, Commodities, and Financial Services Sales Agents"
+EC,4,Security Managers
+ESC,4,Social and Community Service Managers
+EC,4,Supply Chain Managers
+EAS,4,Talent Directors
+ES,4,Training and Development Managers
+EC,4,"Transportation, Storage, and Distribution Managers"
+EC,4,Treasurers and Controllers
+EC,4,Wind Energy Development Managers
+ECS,5,"Arbitrators, Mediators, and Conciliators"
+ECI,5,Architectural and Engineering Managers
+EC,5,Chief Executives
+EIC,5,Chief Sustainability Officers
+ECI,5,Investment Fund Managers
+ECS,5,"Judges, Magistrate Judges, and Magistrates"
+ECI,5,Lawyers
+CEI,5,"Administrative Law Judges, Adjudicators, and Hearing Officers"
+SE,5,Clergy
+IEC,5,Climate Change Policy Analysts
+CE,5,Curators
+SEC,5,"Education Administrators, Kindergarten through Secondary"
+SEC,5,"Education Administrators, Postsecondary"
+SE,5,"Educational, Guidance, and Career Counselors and Advisors"
+IEC,5,Environmental Economists
+IES,5,Industrial-Organizational Psychologists
+SEC,5,Instructional Coordinators
+CEI,5,Judicial Law Clerks
+IEC,5,Natural Sciences Managers
+IEC,5,Urban and Regional Planners
+CSR,1,Amusement and Recreation Attendants
+RC,1,Agricultural Equipment Operators
+RCS,1,Baristas
+RC,1,Conveyor Operators and Tenders
+RCE,1,"Cooks, Fast Food"
+RC,1,"Derrick Operators, Oil and Gas"
+RCS,1,Dining Room and Cafeteria Attendants and Bartender Helpers
+RC,1,Dishwashers
+RC,1,Fallers
+RCE,1,Fast Food and Counter Workers
+RC,1,Fishing and Hunting Workers
+RC,1,Food Preparation Workers
+RC,1,"Graders and Sorters, Agricultural Products"
+RC,1,Landscaping and Groundskeeping Workers
+RC,1,Laundry and Dry-Cleaning Workers
+RC,1,Maids and Housekeeping Cleaners
+RC,1,"Meat, Poultry, and Fish Cutters and Trimmers"
+RC,1,Plasterers and Stucco Masons
+RC,1,Septic Tank Servicers and Sewer Pipe Cleaners
+RC,1,Sewing Machine Operators
+CES,2,Bill and Account Collectors
+CE,2,Cargo and Freight Agents
+CE,2,Cashiers
+CE,2,Correspondence Clerks
+CES,2,Counter and Rental Clerks
+CRS,2,Couriers and Messengers
+CES,2,"Court, Municipal, and License Clerks"
+CES,2,"Credit Authorizers, Checkers, and Clerks"
+CES,2,Customer Service Representatives
+CR,2,Data Entry Keyers
+CR,2,"Dispatchers, Except Police, Fire, and Ambulance"
+C,2,File Clerks
+CRS,2,Flight Attendants
+CER,2,Freight Forwarders
+CE,2,Gambling and Sports Book Writers and Runners
+CE,2,Gambling Cage Workers
+CE,2,Gambling Change Persons and Booth Cashiers
+CER,2,Gambling Dealers
+CER,2,Gambling Surveillance Officers and Gambling Investigators
+CSE,2,"Hotel, Motel, and Resort Desk Clerks"
+CE,2,Insurance Claims and Policy Processing Clerks
+CS,2,"Library Assistants, Clerical"
+CRS,2,"Locker Room, Coatroom, and Dressing Room Attendants"
+CR,2,Log Graders and Scalers
+CR,2,"Mail Clerks and Mail Machine Operators, Except Postal Service"
+CS,2,Medical Secretaries and Administrative Assistants
+CR,2,"Meter Readers, Utilities"
+C,2,"Office Clerks, General"
+CR,2,"Office Machine Operators, Except Computer"
+CE,2,Order Clerks
+CR,2,"Packers and Packagers, Hand"
+CRE,2,Parts Salespersons
+CSR,2,Passenger Attendants
+CER,2,Pharmacy Aides
+CR,2,Postal Service Clerks
+CR,2,Postal Service Mail Carriers
+CR,2,"Postal Service Mail Sorters, Processors, and Processing Machine Operators"
+CR,2,Printing Press Operators
+CE,2,Procurement Clerks
+CE,2,"Production, Planning, and Expediting Clerks"
+CRS,2,Public Safety Telecommunicators
+CES,2,Receptionists and Information Clerks
+CSE,2,Reservation and Transportation Ticket Agents and Travel Clerks
+CER,2,Retail Loss Prevention Specialists
+CES,2,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive"
+CRE,2,"Shipping, Receiving, and Inventory Clerks"
+CRE,2,Stockers and Order Fillers
+CRE,2,"Switchboard Operators, Including Answering Service"
+CSE,2,Telephone Operators
+CE,2,Tellers
+CE,2,"Title Examiners, Abstractors, and Searchers"
+CR,2,Transportation Security Screeners
+CR,2,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping"
+C,2,Word Processors and Typists
+CRE,3,Air Traffic Controllers
+CRE,3,Airfield Operations Specialists
+CRI,3,Aviation Inspectors
+C,3,Billing and Posting Clerks
+CE,3,"Bookkeeping, Accounting, and Auditing Clerks"
+CR,3,Broadcast Technicians
+CE,3,Brokerage Clerks
+CE,3,Compliance Officers
+CRI,3,Computer Numerically Controlled Tool Programmers
+CRI,3,Computer User Support Specialists
+C,3,Court Reporters and Simultaneous Captioners
+CER,3,Customs and Border Protection Officers
+CE,3,Customs Brokers
+CRS,3,Dental Assistants
+CA,3,Desktop Publishers
+CSE,3,"Eligibility Interviewers, Government Programs"
+CRI,3,Energy Auditors
+CES,3,Executive Secretaries and Executive Administrative Assistants
+CE,3,Government Property Inspectors and Investigators
+CIS,3,Health Information Technologists and Medical Registrars
+CES,3,"Human Resources Assistants, Except Payroll and Timekeeping"
+CRE,3,"Insurance Appraisers, Auto Damage"
+CSE,3,"Interviewers, Except Eligibility and Loan"
+CE,3,Legal Secretaries and Administrative Assistants
+CS,3,Library Technicians
+CES,3,Loan Interviewers and Clerks
+CSR,3,Medical Assistants
+CI,3,Medical Records Specialists
+CSI,3,Medical Transcriptionists
+CES,3,"Morticians, Undertakers, and Funeral Arrangers"
+CES,3,New Accounts Clerks
+CR,3,"Opticians, Dispensing"
+CIE,3,Paralegals and Legal Assistants
+CE,3,Payroll and Timekeeping Clerks
+CR,3,Pharmacy Technicians
+CRI,3,Police Identification and Records Officers
+CR,3,Prepress Technicians and Workers
+CEI,3,Private Detectives and Investigators
+CIR,3,Quality Control Analysts
+CE,3,"Tax Examiners and Collectors, and Revenue Agents"
+CE,3,Tax Preparers
+CRI,3,Telecommunications Engineering Specialists
+CI,3,Web Developers
+CEI,4,Accountants and Auditors
+CIE,4,Actuaries
+CE,4,Appraisers and Assessors of Real Estate
+CER,4,Appraisers of Personal and Business Property
+CRE,4,Biomass Power Plant Managers
+CI,4,Blockchain Engineers
+CER,4,Brownfield Redevelopment Specialists and Site Managers
+CEI,4,Budget Analysts
+CIE,4,Business Intelligence Analysts
+CIR,4,Cartographers and Photogrammetrists
+CEI,4,"Claims Adjusters, Examiners, and Investigators"
+CI,4,Clinical Data Managers
+CEI,4,"Compensation, Benefits, and Job Analysis Specialists"
+CE,4,Compliance Managers
+CEI,4,Computer and Information Systems Managers
+CIR,4,Computer Network Support Specialists
+CI,4,Computer Programmers
+CE,4,Cost Estimators
+CEI,4,Credit Analysts
+CSE,4,Credit Counselors
+CI,4,Data Warehousing Specialists
+CI,4,Database Administrators
+CI,4,Database Architects
+CI,4,Document Management Specialists
+CIR,4,Environmental Compliance Inspectors
+CEI,4,Financial and Investment Analysts
+CEI,4,Financial Examiners
+CIE,4,Financial Risk Specialists
+CEI,4,"Fraud Examiners, Investigators and Analysts"
+CIR,4,Geographic Information Systems Technologists and Technicians
+CIR,4,Industrial Engineers
+CI,4,Information Security Analysts
+CIR,4,Information Security Engineers
+CEI,4,Insurance Underwriters
+CAS,4,Interpreters and Translators
+CES,4,Loan Officers
+CEI,4,Logisticians
+CEI,4,Logistics Analysts
+CIR,4,Logistics Engineers
+CE,4,Loss Prevention Managers
+CIE,4,Management Analysts
+CRI,4,Network and Computer Systems Administrators
+CE,4,Online Merchants
+CA,4,Proofreaders and Copy Markers
+CER,4,"Purchasing Agents, Except Wholesale, Retail, and Farm Products"
+CEI,4,Quality Control Systems Managers
+CRI,4,Radio Frequency Identification Device Specialists
+CEI,4,Regulatory Affairs Specialists
+CIR,4,Security Management Specialists
+CI,4,Statistical Assistants
+CRI,4,Surveyors
+CAI,4,Technical Writers
+CR,4,Transportation Inspectors
+CIE,4,Web Administrators
+CEI,5,"Administrative Law Judges, Adjudicators, and Hearing Officers"
+CI,5,Archivists
+CE,5,Curators
+CEI,5,Judicial Law Clerks
+CSI,5,Librarians and Media Collections Specialists
+SCI,5,Anesthesiologist Assistants
+ECS,5,"Arbitrators, Mediators, and Conciliators"
+IC,5,Biostatisticians
+ICR,5,Computer and Information Research Scientists
+ICE,5,Economists
+IC,5,Financial Quantitative Analysts
+ICR,5,Geneticists
+ECI,5,Investment Fund Managers
+ECI,5,Lawyers
+IC,5,Mathematicians
+IC,5,Operations Research Analysts
+ICR,5,Radiologists
+IC,5,Statisticians
+IC,5,Survey Researchers
+SC,5,"Teaching Assistants, Postsecondary"
+RAC,1,"Painting, Coating, and Decorating Workers"
+ASE,2,Actors
+ACR,2,Costume Attendants
+AEC,2,"Disc Jockeys, Except Radio"
+ARE,2,Models
+RAC,2,Floral Designers
+SA,2,Nannies
+RA,2,Shoe and Leather Workers and Repairers
+RAC,2,"Stone Cutters and Carvers, Manufacturing"
+RA,2,"Tailors, Dressmakers, and Custom Sewers"
+RAC,2,Upholsterers
+SCA,2,Childcare Workers
+RCA,2,Etchers and Engravers
+RCA,2,Furniture Finishers
+RCA,2,Paperhangers
+RCA,2,Photographic Process Workers and Processing Machine Operators
+RCA,2,"Sewers, Hand"
+ARC,3,"Camera Operators, Television, Video, and Film"
+AR,3,Craft Artists
+ARS,3,Dancers
+ARE,3,Fashion Designers
+AR,3,"Fine Artists, Including Painters, Sculptors, and Illustrators"
+AR,3,"Makeup Artists, Theatrical and Performance"
+ARE,3,Merchandise Displayers and Window Trimmers
+CA,3,Desktop Publishers
+RAC,3,Fabric and Apparel Patternmakers
+RAC,3,Jewelers and Precious Stone and Metal Workers
+RAC,3,Musical Instrument Repairers and Tuners
+RA,3,Photographers
+SA,3,"Preschool Teachers, Except Special Education"
+SA,3,Self-Enrichment Teachers
+RAC,3,Sound Engineering Technicians
+RCA,3,Architectural and Civil Drafters
+RCA,3,"Model Makers, Wood"
+RCA,3,"Patternmakers, Metal and Plastic"
+RCA,3,"Patternmakers, Wood"
+AE,4,Art Directors
+AES,4,Broadcast Announcers and Radio Disc Jockeys
+AS,4,Choreographers
+ARI,4,Commercial and Industrial Designers
+ACE,4,Editors
+AC,4,Film and Video Editors
+A,4,Graphic Designers
+AR,4,Interior Designers
+AE,4,Music Directors and Composers
+AE,4,Musicians and Singers
+AIE,4,"News Analysts, Reporters, and Journalists"
+AI,4,"Poets, Lyricists and Creative Writers"
+AE,4,Producers and Directors
+AR,4,Special Effects Artists and Animators
+AIE,4,Video Game Designers
+AE,4,Writers and Authors
+SA,4,"Kindergarten Teachers, Except Special Education"
+SAI,4,Music Therapists
+EAS,4,Talent Directors
+IAC,4,Web and Digital Interface Designers
+A,5,Set and Exhibit Designers
+RAI,5,"Architects, Except Landscape and Naval"
+SA,5,Art Therapists
+SA,5,"Art, Drama, and Music Teachers, Postsecondary"
+IA,5,Political Scientists
+SA,5,"Special Education Teachers, Preschool"
+SIA,5,"Architecture Teachers, Postsecondary"
+SIA,5,"English Language and Literature Teachers, Postsecondary"
+ISA,5,Sociologists
