@@ -51,3 +51,14 @@ You find that the new query exists, return 'None\
 You find that the new query does not exist in the list, return 1\
 note that 1 is the index inside the tuple\
 """
+
+
+cypher_code_analyst_prompt = "Context of the graph's schema: {graph_schema}\
+                              Cypher code 1: {cypher_code_1}\
+                              Cypher code 2: {cypher_code_2}\
+                              You are a cypher coder analyst. Your task is to read cypher codes and compare them.\
+                              You are not allowed to query the graph or to use any functions.\
+                              You will read each cypher code given to you, then you should notice (without querying the graph) if they return the same output \
+                              If they return the same output: return True\
+                              If they do not return the same output: return False\
+                              Your output should be True or False without any added explanation or letter."
