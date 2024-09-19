@@ -5,11 +5,10 @@ from Streamlit_Sub_Folder.Helpers.api_functions import get_api_response
 def display_chat_page(session_state):
 
   # Add user's message to sessions_state
-  if prompt := st.chat_input(placeholder = "Your message ..."): # (:= assigns chat_input's result to prompt while checking if its none)
+  if prompt := st.chat_input(placeholder = "Your message ..."):
     session_state.messages.append({"role": "user", "content": prompt})
 
-
-  # Send user's message to the Agent, recieve Agent's response, and save the save the response in sessions_state
+  # Send user's message to the Agent, recieve Agent's response, and save the response in sessions_state
   if prompt:
     api_output = get_api_response(user_message=prompt) # api_output: {response, num_queries_made, cypher_code_and_query_outputs}
     
@@ -23,15 +22,14 @@ def display_chat_page(session_state):
       session_state.messages.append({"role": "assistant", "content": f"{ai_response}"})
       
       session_state.extracted_data = api_output['extracted_data']
-      session_state.num_queries_made = api_output['num_queries_made']
-      session_state.cypher_code_and_query_outputs = api_output['cypher_code_and_query_outputs']
+      session_state.good_cypher_and_outputs = api_output['good_cypher_and_outputs']
+      session_state.graph_data_to_be_used = api_output['graph_data_to_be_used']
 
 
   # Display Conversation in the UI
   for message in session_state.messages:
     with st.chat_message(message["role"]):
       st.markdown(message["content"])
-  
 
   # Displays greeting UI if conversation is empty
   if len(session_state.messages) == 0:

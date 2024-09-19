@@ -14,9 +14,8 @@ if not ("pages" and "current_page") in st.session_state:
 if "messages" not in st.session_state:
   st.session_state.messages = []
 
-if not ("num_queries_made" and "cypher_code_and_query_outputs") in st.session_state:
-  st.session_state.num_queries_made = 0
-  st.session_state.cypher_code_and_query_outputs = []
+if not ("graph_data_to_be_used") in st.session_state:
+  st.session_state.graph_data_to_be_used = []
 
 if not "extracted_data" in st.session_state:
   st.session_state.extracted_data = []

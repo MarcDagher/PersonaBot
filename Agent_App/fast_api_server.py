@@ -43,15 +43,16 @@ agent = agent_workflow.Agent(
 def send_user_message(user_message):
     config = {"configurable": {"thread_id": "1"}}
     response = []
-    for event in agent.graph.stream({"conversation": [user_message]}, config, stream_mode="values"):
+    for event in agent.graph.stream({"conversation": [user_message], "graph_data_to_be_used": []}, config, stream_mode="values"):
         response.append(event["conversation"][-1].content)
     
     state = agent.graph.get_state(config=config).values
+    
     return {
         "response": response, 
-        "num_queries_made": state['num_queries_made'], 
-        "cypher_code_and_query_outputs": state['cypher_code_and_query_outputs'],
-        "extracted_data": state['extracted_data']
+        "good_cypher_and_outputs": state['good_cypher_and_outputs'],
+        "extracted_data": state['extracted_data'],
+        "graph_data_to_be_used": state['graph_data_to_be_used']
         }
 
 
@@ -75,7 +76,7 @@ async def call_agent(request: Messages):
         print("-----------------")
         print(e)
         print("-----------------")
-        if e.response.status_code == 400: return "Failed to call the function due to your bad prompt"
+        if e.response.status_code == 400: return "Agent failed to call the function. Try to better explain what you want."
         elif e.response.status_code == 422: return "Unprocessable Entry"
         elif e.response.status_code == 429: return "Rate limit reached for model"
         elif e.response.status_code == 500: return "Internal Server Error"
