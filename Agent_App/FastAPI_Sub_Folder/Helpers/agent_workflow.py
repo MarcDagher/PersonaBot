@@ -26,9 +26,9 @@ dotenv_path = Path('../.env')
 success = load_dotenv(dotenv_path=dotenv_path)
 
 load_dotenv(dotenv_path=dotenv_path)
-os.environ["NEO4J_URI"] = os.getenv('uri')
-os.environ["NEO4J_USERNAME"] = os.getenv('user_name')
-os.environ["NEO4J_PASSWORD"] = os.getenv('password')
+os.environ["NEO4J_URI"] = os.getenv('NEO4J_URI')
+os.environ["NEO4J_USERNAME"] = os.getenv('NEO4J_USERNAME')
+os.environ["NEO4J_PASSWORD"] = os.getenv('NEO4J_PASSWORD')
 os.environ["LANGCHAIN_TRACING_V2"] = os.getenv('LANGCHAIN_TRACING_V2')
 graph = Neo4jGraph()
 

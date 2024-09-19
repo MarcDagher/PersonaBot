@@ -9,7 +9,7 @@ from langchain.graphs import Neo4jGraph
 from langchain_core.messages import HumanMessage
 
 ## LangGraph
-from FastAPI_Sub_Folder.Helpers import agent_workflow, prompts
+from FastAPI_Sub_Folder.Helpers import agent_workflow, prompts, agent_workflow_2
 
 ## Environment Variables
 import os
@@ -23,9 +23,9 @@ dotenv_path = Path('.env')
 load_dotenv(dotenv_path=dotenv_path)
 os.environ["GROQ_API_KEY"] = os.getenv('GROQ_API_KEY')
 
-os.environ["NEO4J_URI"] = os.getenv('uri')
-os.environ["NEO4J_USERNAME"] = os.getenv('user_name')
-os.environ["NEO4J_PASSWORD"] = os.getenv('password')
+os.environ["NEO4J_URI"] = os.getenv('NEO4J_URI')
+os.environ["NEO4J_USERNAME"] = os.getenv('NEO4J_USERNAME')
+os.environ["NEO4J_PASSWORD"] = os.getenv('NEO4J_PASSWORD')
 graph = Neo4jGraph()
 
 ##############################
@@ -33,9 +33,9 @@ graph = Neo4jGraph()
 ##############################
 model = ChatGroq(temperature=0.7, model_name="llama-3.1-70b-versatile", max_retries=5, verbose=True)
 # model = ChatGroq(temperature=0.7, model_name="llama3-70b-8192")
-agent = agent_workflow.Agent(
+agent = agent_workflow_2.Agent(
     model=model, 
-    tools=[agent_workflow.query_graph], 
+    tools=[agent_workflow_2.query_graph], 
     system=prompts.personality_scientist_prompt.format(schema=graph.structured_schema)
     )
 
@@ -43,15 +43,16 @@ agent = agent_workflow.Agent(
 def send_user_message(user_message):
     config = {"configurable": {"thread_id": "1"}}
     response = []
-    for event in agent.graph.stream({"conversation": [user_message]}, config, stream_mode="values"):
+    for event in agent.graph.stream({"conversation": [user_message], "graph_data_to_be_used": []}, config, stream_mode="values"):
         response.append(event["conversation"][-1].content)
     
     state = agent.graph.get_state(config=config).values
+    
     return {
         "response": response, 
-        "num_queries_made": state['num_queries_made'], 
-        "cypher_code_and_query_outputs": state['cypher_code_and_query_outputs'],
-        "extracted_data": state['extracted_data']
+        "good_cypher_and_outputs": state['good_cypher_and_outputs'],
+        "extracted_data": state['extracted_data'],
+        "graph_data_to_be_used": state['graph_data_to_be_used']
         }
 
 
@@ -75,7 +76,7 @@ async def call_agent(request: Messages):
         print("-----------------")
         print(e)
         print("-----------------")
-        if e.response.status_code == 400: return "Failed to call the function due to your bad prompt"
+        if e.response.status_code == 400: return "Agent failed to call the function. Try to better explain what you want."
         elif e.response.status_code == 422: return "Unprocessable Entry"
         elif e.response.status_code == 429: return "Rate limit reached for model"
         elif e.response.status_code == 500: return "Internal Server Error"
