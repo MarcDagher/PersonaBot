@@ -9,7 +9,8 @@ from langchain.graphs import Neo4jGraph
 from langchain_core.messages import HumanMessage
 
 ## LangGraph
-from FastAPI_Sub_Folder.Helpers import agent_workflow, prompts, agent_workflow_2
+from Agent_App.FastAPI_Sub_Folder.Helpers import agent_workflow
+from FastAPI_Sub_Folder.Helpers import agent_workflow, prompts
 
 ## Environment Variables
 import os
@@ -33,9 +34,9 @@ graph = Neo4jGraph()
 ##############################
 model = ChatGroq(temperature=0.7, model_name="llama-3.1-70b-versatile", max_retries=5, verbose=True)
 # model = ChatGroq(temperature=0.7, model_name="llama3-70b-8192")
-agent = agent_workflow_2.Agent(
+agent = agent_workflow.Agent(
     model=model, 
-    tools=[agent_workflow_2.query_graph], 
+    tools=[agent_workflow.query_graph], 
     system=prompts.personality_scientist_prompt.format(schema=graph.structured_schema)
     )
 

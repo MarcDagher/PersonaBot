@@ -6,10 +6,10 @@ def display_knowledge_graph_page(session_state):
   
   # NOTE: session_state.graph_data_to_be_used => is a list of cypher codes that the Agent just used
   num_queries_made = len(session_state.graph_data_to_be_used)
-  extracted_data = session_state.extracted_data[-1]
 
   # Check if the model used the graph
   if num_queries_made > 0:
+    extracted_data = session_state.extracted_data[-1]
     
     # Display the results from the knowledge graph
     for i in range(-1, -num_queries_made - 1, -1): # backward loop
