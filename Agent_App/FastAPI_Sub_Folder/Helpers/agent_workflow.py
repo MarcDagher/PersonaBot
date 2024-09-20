@@ -146,7 +146,6 @@ class Agent:
             safe_conversation.append(SystemMessage(content=safe_content) if isinstance(message, SystemMessage) else HumanMessage(content=safe_content))
 
         ai_response = self.model.invoke(safe_conversation)
-        # ai_response = self.model.invoke(conversation)
 
         # Scan output
         safe_output = self.scan_output(ai_response.content, safe_conversation[-1].content)
