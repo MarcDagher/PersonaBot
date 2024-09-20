@@ -1,7 +1,7 @@
 # LangChain
-from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ToolMessage
-from langchain.graphs import Neo4jGraph
 from langchain_core.tools import tool
+from langchain.graphs import Neo4jGraph
+from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ToolMessage
 
 # LangGraph
 from langgraph.graph import StateGraph, END
@@ -10,22 +10,18 @@ from langgraph.checkpoint.memory import MemorySaver
 # LangSmith
 from langsmith import traceable
 
-
 # General Imports
 import os
-import ast
 import operator
 from pathlib import Path
 from dotenv import load_dotenv
-from typing import TypedDict, Annotated
-from IPython.display import Image, display
+from typing import TypedDict, Annotated # to construct the agent's state
 from FastAPI_Sub_Folder.Helpers import prompts 
 
 # LLM Guard Imports
-from llm_guard import scan_output, scan_prompt
+from llm_guard.vault import Vault
 from llm_guard.input_scanners import Anonymize, PromptInjection, BanTopics
 from llm_guard.output_scanners import NoRefusal, Toxicity, Sensitive, Relevance
-from llm_guard.vault import Vault
 
 # Logging
 import logging
@@ -33,23 +29,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Connect to graph
-success = load_dotenv()
-print(f"\n\n-------- {success}")
-load_dotenv()
+dotenv_path = Path('../.env')
+load_dotenv(dotenv_path=dotenv_path)
 os.environ["NEO4J_URI"] = os.getenv('NEO4J_URI')
 os.environ["NEO4J_USERNAME"] = os.getenv('NEO4J_USERNAME')
 os.environ["NEO4J_PASSWORD"] = os.getenv('NEO4J_PASSWORD')
 os.environ["LANGCHAIN_TRACING_V2"] = os.getenv('LANGCHAIN_TRACING_V2')
+success = load_dotenv()
+print(f"\n\n-------- {success}")
 graph = Neo4jGraph()
-
-# Create Agent's State
-class AgentState(TypedDict):
-    conversation: Annotated[list[AnyMessage], operator.add]
-    tool_messages: list[list[AnyMessage]]
-    cypher_code_and_query_outputs: Annotated[list[dict], operator.add]
-    extracted_data: Annotated[list[str], operator.add]
-    query_is_unique: dict
-    num_queries_made: int
 
 # Create the tool to be used by the Agent
 @tool
@@ -57,32 +45,38 @@ def query_graph(query):
     """Query from Neo4j knowledge graph using Cypher."""
     return graph.query(query)
 
+# Create Agent's State
+class AgentState(TypedDict):
+    conversation: Annotated[list[ AnyMessage ], operator.add]
+    good_cypher_and_outputs: Annotated[dict[ str, str ], operator.or_]
+    bad_cypher: Annotated[list[ str ], operator.add]
+    extracted_data: Annotated[list[ str ], operator.add]
+
+    graph_data_to_be_used: list[str]
+
 # Create Agent
 class Agent:
-    def __init__(self, model, tools, system):
-        self.system = system
-        self.tools = {t.name: t for t in tools}
-        self.model = model.bind_tools(tools)
+
+    def __init__(self, model, tools, system: str):
 
         graph = StateGraph(AgentState)
         memory = MemorySaver()
 
         graph.add_node("personality_scientist", self.call_groq)
-        graph.add_node("graph_querying_tool", self.use_tool)
-        graph.add_node("structure_queried_data", self.structure_queried_data)
+        graph.add_node("validate_cypher_then_query_graph", self.validate_cypher_then_query_graph) # Checks if query is new
         graph.add_node("extract_data", self.extract_data)
         graph.add_node("recommend_careers", self.recommend_careers)
 
-        graph.add_conditional_edges("personality_scientist", self.validate_tool_call, {False: END, True: "graph_querying_tool"})
-
-        graph.add_edge("graph_querying_tool", "structure_queried_data")
-        graph.add_edge("structure_queried_data", "extract_data")
+        graph.add_conditional_edges("personality_scientist", self.validate_tool_call, {True: 'validate_cypher_then_query_graph', False: END})
+        graph.add_edge("validate_cypher_then_query_graph", "extract_data")
         graph.add_edge("extract_data", "recommend_careers")
         graph.add_edge("recommend_careers", END)
         graph.set_entry_point("personality_scientist")
 
         self.graph = graph.compile(checkpointer=memory)
-        display(Image(self.graph.get_graph().draw_mermaid_png()))
+        self.system = system
+        self.tools = {t.name: t for t in tools} # Save the tools' names that can be used
+        self.model = model.bind_tools(tools)
 
         # LLM Guard setup
         self.vault = Vault()
@@ -95,7 +89,7 @@ class Agent:
             NoRefusal(threshold=0.8),
             Toxicity(threshold=0.8), 
             Sensitive(threshold=0.7),
-            Relevance(threshold=0.8)
+            Relevance(threshold=0.4)
         ]
 
     def scan_input(self, content):
@@ -114,140 +108,167 @@ class Agent:
                 return None
         return output
 
+    ## Helper function that returns the cyphers written before. This is used when calling the LLM
+    def get_previous_cyphers(self, state: AgentState):
+        cyphers_list = ""
+        
+        if len(state['bad_cypher']) > 0:
+            cyphers_list += f"- Here are previously written cypher codes that did not return an output: {str(state['bad_cypher'])}"
+
+        good_cypher = list(state['good_cypher_and_outputs'].keys())
+        if len(good_cypher) > 0:
+            cyphers_list += f"- Here are previously written cypher codes that successfully returned an output: {str(good_cypher)}"
+        
+        if cyphers_list != "": 
+            output = "\nWhen you are ready to write the cypher code, use these as reference: \n" + cyphers_list
+            return output
+        else:
+            return None
+    
+    ## Get the LLM's response and update the Agent's State by adding the response to the messages
     @traceable
     def call_groq(self, state: AgentState):
-        messages = state['conversation']
-        conversation = [SystemMessage(content=self.system)] + messages
+
+        previous_cyphers = self.get_previous_cyphers(state = state)
+        if previous_cyphers:
+            system_message = f"{self.system}. {previous_cyphers}"
+        else:
+            system_message = self.system
+
+        conversation = [SystemMessage(content=system_message)] + state['conversation']
 
         # Scan input
         safe_conversation = []
         for message in conversation:
             safe_content = self.scan_input(message.content)
             if safe_content is None:
-                return {'conversation': [HumanMessage(content="I'm sorry, but I can't process that input due to security concerns.")], 'num_queries_made': 0}
+                return {'conversation': [HumanMessage(content="I'm sorry, but I can't process that input due to security concerns.")]}
             safe_conversation.append(SystemMessage(content=safe_content) if isinstance(message, SystemMessage) else HumanMessage(content=safe_content))
 
         ai_response = self.model.invoke(safe_conversation)
+        # ai_response = self.model.invoke(conversation)
 
         # Scan output
         safe_output = self.scan_output(ai_response.content, safe_conversation[-1].content)
         if safe_output is None:
-            return {'conversation': [HumanMessage(content="I apologize, but I can't provide that response due to security concerns.")], 'num_queries_made': 0}
+            return {'conversation': [HumanMessage(content="I apologize, but I can't provide that response due to security concerns.")]}
 
-        return {'conversation': [ai_response], 'num_queries_made': 0}
+        return {'conversation': [ai_response]}
 
+    ## Check if the model called for an action by checking the last message in the conversation
     def validate_tool_call(self, state: AgentState):
         ai_message = state['conversation'][-1]
-        if hasattr(ai_message, 'tool_calls'):
-            return len(ai_message.tool_calls) > 0
-        else:
-            # If the message doesn't have tool_calls, assume no tool call was made
-            return False
-
-    def use_tool(self, state: AgentState):
+        return len(ai_message.tool_calls) > 0
+        
+    ## Check if the new cypher codes have already been written by the LLM
+    def validate_cypher_then_query_graph(self, state: AgentState):
+        print(f"\n------- in validate query")
         tool_calls = state['conversation'][-1].tool_calls
-        num_queries_made = state['num_queries_made']
-        query_uniqueness_dict = {'status': True, 'index': None}
-        results = []
-        
-        for tool in tool_calls:
-            print(f"Calling: {tool['name']}")
 
-            if not tool['name'] in self.tools:
-                print("\n ....tool name not found in list of tools....")
-                result = "tool name was not found in the list of tools, retry"
-            elif tool['name'] == 'query_graph' and len(state['cypher_code_and_query_outputs']) > 0:
-                print("\n ---- Tool Use Update ----> checking if query exists")
-               
-                previous_queries = []
-                for i in range(len(state['cypher_code_and_query_outputs'])):
-                    cypher = state['cypher_code_and_query_outputs'][i]['cypher_code']
-                    previous_queries.append((f"index: {i}", cypher))
-                
-                query = tool['args']
-                print(f"\n ---- Tool Use Update ----> previous queries: {previous_queries}, new_query: {query}")
+        good_cypher_and_outputs = {} # stores the cypher queries that returned an output
+        bad_cypher = [] # stores the cypher queries that did not return an output
+        graph_data_to_be_used = [] # stores the queries that the model currently wants to use
 
-                ai_response = self.model.invoke([
-                SystemMessage(content=prompts.query_validator_prompt),
-                HumanMessage(content=f"new cypher query: {query}. List of queries: {previous_queries}")
-                ])
+        # Go over the cypher codes given by the LLM
+        for i in range(len(tool_calls)):
+            current_tool_call = tool_calls[i]
+            new_cypher = current_tool_call['args']['query']
+
+            status = None
+
+            # Check if tool exists
+            if current_tool_call['name'] in self.tools:
                 
-                print(f"\n---- Tool Use Update ----> ai_response: {ai_response}\n")
+                # LLM checks if the cypher query has already been made + if it returned an output
+                if status == None:
+                    print(f"----- Checker 1")
+                    good_cyphers = list(state['good_cypher_and_outputs'].keys())
+                    for i in range(len( good_cyphers )):
+                        key = good_cyphers[i]
+                        comparison = self.model.invoke(
+                            prompts.cypher_code_analyst_prompt.format(cypher_code_1=new_cypher, cypher_code_2=key, graph_schema=graph.structured_schema)
+                            )
+                        print(f"\n-------- {comparison.content}")
+                        # If Query exists => Save cypher code to later access the output and give it to the model
+                        if comparison.content.lower() == "true":
+                            print("\n----- Good Cyphers are similar, save the cypher")
+                            graph_data_to_be_used.append(key)
+                            status = "good_cypher"
+                            break
                 
-                if 'none' in ai_response.content.lower():
-                    print(f"\n ---- Tool Use Update ----> new query")
-                    try:
-                        result = self.tools[tool['name']].invoke(tool['args'])
-                        num_queries_made += 1
-                    except ValueError as e:
-                        result = f"ValueError occurred: {str(e)}"    
-                else:
-                    print(f"\n ---- Tool Use Update ----> query exists\n")
-                    try:
-                        index = int(ai_response.content)
-                        result = state['cypher_code_and_query_outputs'][index]['output']
-                        query_uniqueness_dict = {'status': False, 'index': index}
-                    except:
-                        result = "Something is wrong. Please make sure to give me the correct index and not an empty string."
+                # LLM checks if the cypher query has already been made + if it didn't return an output
+                if status == None:
+                    print(f"----- Checker 2")
+                    for i in range(len(state['bad_cypher'])):
+                        comparison = self.model.invoke(
+                            prompts.cypher_code_analyst_prompt.format(
+                                cypher_code_1=new_cypher, cypher_code_2=state['bad_cypher'][i], graph_schema=graph.structured_schema)
+                            )
+                        # Query exists => LLM should fix the query
+                        if comparison.content.lower() == "true":
+                            print("---- Bad Cyphers are similar, have the LLM query again")
+                            status = "bad_cypher"
+                            break
+
+                # If the cypher code hasn't been used before => query the graph
+                if status == None:
+                    print(f"----- Checker 3")
+                    query_output = self.tools[current_tool_call['name']].invoke(new_cypher)
+                    result = ToolMessage(content=str(query_output), name=current_tool_call['name'], tool_call_id=current_tool_call['id'])
+                    
+                    if result.content not in ["", None, '[]']:
+                        good_cypher_and_outputs[new_cypher] = result.content
+                        graph_data_to_be_used.append(new_cypher)
+                        print("----- Successfully queried graph")
+
+                    else:
+                        bad_cypher.append(new_cypher)
+                        print("----- Bad query")
             else:
-                print(f"\n---- Tool Use Update ----> query is unique\n")
-                try:
-                    result = self.tools[tool['name']].invoke(tool['args'])
-                    num_queries_made += 1
-                except ValueError as e:
-                    result = f"ValueError occurred: {str(e)}" 
+                print("tool name not found in list of tools")
 
-            results.append(ToolMessage(tool_call_id=tool['id'], name=tool['name'], content=str(result)))
+        # Save the data that we got in the AgentState
+        return_statement = {}
+        if len(good_cypher_and_outputs) > 0: return_statement['good_cypher_and_outputs'] = good_cypher_and_outputs
+        if len(bad_cypher) > 0: return_statement['bad_cypher'] = bad_cypher
+        if len(graph_data_to_be_used) > 0: return_statement['graph_data_to_be_used'] = graph_data_to_be_used
 
-        print("Back to the model!")
-        return {'tool_messages': [results], 'query_is_unique': query_uniqueness_dict, 'num_queries_made': num_queries_made}
+        return return_statement
     
-    def structure_queried_data(self, state: AgentState):
-        if state['query_is_unique']['status'] == True:
-            tool_calls = state['conversation'][-1].additional_kwargs['tool_calls']
-            query_output = state['tool_messages'][-1]
-
-            structured_outputs = []
-            for i in range(len(tool_calls)):
-                cypher_code = ast.literal_eval(tool_calls[i]['function']['arguments'])['query']
-                output = query_output[i].content
-                
-                if cypher_code:
-                    structured_outputs.append({'cypher_code': cypher_code, 'output': output})
-
-            return {'cypher_code_and_query_outputs': structured_outputs}
-        else:
-            print("Query already exists, skipping structure_queried_data step")
-            return
-    
+    ## LLM extracts what it needs from the query's output
     def extract_data(self, state: AgentState):
-        if state['query_is_unique']['status'] == True:
-            queried_data = []
-            last_tool_message = state['tool_messages'][-1]
-            for i in range(-1, -len(last_tool_message)-1, -1):
-                cypher_code = state['cypher_code_and_query_outputs'][i]['cypher_code']
-                output = state['cypher_code_and_query_outputs'][i]['output']
-                queried_data.append(f"cypher code: {cypher_code}. output: {output}")
-                
-            prompt = [SystemMessage(content=self.system)] + state['conversation'] + [HumanMessage(content= prompts.extractor_prompt.format(queried_data=queried_data))]
+        print('\n-------> In extract data')
+
+        if len(state['graph_data_to_be_used']) > 0:
+            data_to_give_to_the_LLM = [{cypher: state['good_cypher_and_outputs'][cypher]} for cypher in state['graph_data_to_be_used']]
+            extracted_data = self.model.invoke(prompts.extractor_prompt.format(queried_data = data_to_give_to_the_LLM))
+            print("----- Data has been extracted")
+            return {'extracted_data': [extracted_data.content]}
+
         else:
-            existing_output_index = state['query_is_unique']['index']
-            queried_data = state['cypher_code_and_query_outputs'][existing_output_index]['output']
-            prompt = [SystemMessage(content=self.system)] + state['conversation'] + [HumanMessage(content= prompts.extractor_prompt.format(queried_data=queried_data))]
-        
-        extracted_data = self.model.invoke(prompt)
+            print("No queries to be made")
+            return
 
-        return {"extracted_data": [extracted_data]}
-
+    ## Generate final output
     def recommend_careers(self, state: AgentState):
-        prompt = [SystemMessage(content=self.system)] + state['conversation']
-        prompt = prompt + [HumanMessage(content= prompts.recommender_prompt.format(extracted_data=state['extracted_data'][-1]))]
+
+        # Give the LLM context of previously written cypher code
+        previous_cyphers = self.get_previous_cyphers(state = state)
+        if previous_cyphers:
+            system_message = f"{self.system}. {previous_cyphers}"
+        else:
+            system_message = self.system
         
-        recommended_careers = self.model.invoke(prompt)
+        conversation = [SystemMessage(content=system_message)] + state['conversation']
+
+        # Give LLM a prompt based on the data received from the graph. (Data received can be empty or not)
+        if len(state['graph_data_to_be_used']) > 0:
+            prompt = conversation + [HumanMessage(content= prompts.recommender_prompt_with_data.format(extracted_data=state['extracted_data'][-1]))]
+            print("----- Giving extracted data to the agent")
+        else:
+            prompt = conversation + [HumanMessage(content= prompts.recommender_prompt_without_data)]
+            print("----- No data to give to the agent")
         
-        # Scan output
-        safe_output = self.scan_output(recommended_careers.content, prompt[-1].content)
-        if safe_output is None:
-            return {'conversation': [SystemMessage(content="I apologize, but I can't provide that response due to security concerns.")], 'tool_messages': []}
-        
-        return {'conversation': [SystemMessage(content=safe_output)], 'tool_messages': []}
+        ai_response = self.model.invoke(prompt)
+        print("------- Ready to recommend")
+        return {'conversation': [ai_response]}
