@@ -18,16 +18,6 @@ from dotenv import load_dotenv
 from typing import TypedDict, Annotated # to construct the agent's state
 from FastAPI_Sub_Folder.Helpers import prompts 
 
-# LLM Guard Imports
-from llm_guard.vault import Vault
-from llm_guard.input_scanners import Anonymize, PromptInjection, BanTopics
-from llm_guard.output_scanners import NoRefusal, Toxicity, Sensitive, Relevance
-
-# Logging
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 # Connect to graph
 dotenv_path = Path('../.env')
 load_dotenv(dotenv_path=dotenv_path)
@@ -78,36 +68,6 @@ class Agent:
         self.tools = {t.name: t for t in tools} # Save the tools' names that can be used
         self.model = model.bind_tools(tools)
 
-        # LLM Guard setup
-        self.vault = Vault()
-        self.input_scanners = [
-            Anonymize(self.vault),
-            PromptInjection(),
-            BanTopics(["explicit", "hate", "violence"], threshold=0.95)
-        ]
-        self.output_scanners = [
-            NoRefusal(threshold=0.8),
-            Toxicity(threshold=0.8), 
-            Sensitive(threshold=0.7),
-            Relevance(threshold=0.4)
-        ]
-
-    def scan_input(self, content):
-        for scanner in self.input_scanners:
-            content, is_valid, risk_score = scanner.scan(prompt=content)
-            if not is_valid:
-                logger.warning(f"Input failed security check: {content[:50]}...")
-                return None
-        return content
-
-    def scan_output(self, output, prompt):
-        for scanner in self.output_scanners:
-            output, is_valid, _ = scanner.scan(output=output, prompt=prompt)
-            if not is_valid:
-                logger.warning(f"Output failed security check: {output[:50]}...")
-                return None
-        return output
-
     ## Helper function that returns the cyphers written before. This is used when calling the LLM
     def get_previous_cyphers(self, state: AgentState):
         cyphers_list = ""
@@ -136,21 +96,7 @@ class Agent:
             system_message = self.system
 
         conversation = [SystemMessage(content=system_message)] + state['conversation']
-
-        # Scan input
-        safe_conversation = []
-        for message in conversation:
-            safe_content = self.scan_input(message.content)
-            if safe_content is None:
-                return {'conversation': [HumanMessage(content="I'm sorry, but I can't process that input due to security concerns.")]}
-            safe_conversation.append(SystemMessage(content=safe_content) if isinstance(message, SystemMessage) else HumanMessage(content=safe_content))
-
-        ai_response = self.model.invoke(safe_conversation)
-
-        # Scan output
-        safe_output = self.scan_output(ai_response.content, safe_conversation[-1].content)
-        if safe_output is None:
-            return {'conversation': [HumanMessage(content="I apologize, but I can't provide that response due to security concerns.")]}
+        ai_response = self.model.invoke(conversation)
 
         return {'conversation': [ai_response]}
 

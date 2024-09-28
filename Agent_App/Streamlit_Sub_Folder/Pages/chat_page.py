@@ -11,7 +11,7 @@ def display_chat_page(session_state):
   # Send user's message to the Agent, recieve Agent's response, and save the response in sessions_state
   if prompt:
     api_output = get_api_response(user_message=prompt) # api_output: {response, num_queries_made, cypher_code_and_query_outputs}
-    
+
     # Check for returned errors
     if isinstance(api_output, str):
       session_state.messages.append({"role": "assistant", "content": f"Somthing went wrong ({api_output})."})
