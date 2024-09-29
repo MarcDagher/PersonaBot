@@ -24,7 +24,9 @@ personality_scientist_prompt = f"{task}\ {schema_context}\ {property_values}\ {q
 # Prompt given to the model to extract data from the returned query output
 extractor_prompt = "You have now queried the graph.\
             Here is the cypher code you wrote and the returned data: {queried_data}.\
-            Read it, extract everything that is suitable for my character and that you might find useful when recommending careers.\
+            Here is our conversation between: {conversation}.\
+            Read returned data and the conversation.\
+            From the data returned from your query, extract what is suitable for my character and what you might find useful when recommending careers.\
             Return what you extracted from the output in the format of [['Node1','relation_name','Node2']...]  where related nodes are together\
             Note: do not add any explanation, description, analysis or even recommendations. Stick to the format I told you about.\
             Reminder, please return your output in this the format, I need it like this so that I can plot it: [['Node1','relation_name','Node2']]"
@@ -33,7 +35,8 @@ extractor_prompt = "You have now queried the graph.\
 # Prompt given to the model to recommend careers using extracted data
 recommender_prompt_with_data = "You queried the graph and extracted the necessary data from the returned output.\
             Here are the extracted data: {extracted_data}\
-            now use the conversation's history with the extracted data from the returned query to give me suitable career tracks."
+            now use the conversation's history with the extracted data from the returned query to give me suitable career tracks.\
+            Do not mention the cypher query in your output."
 
 # Prompt given to the model to recommend careers without using extracted data
 recommender_prompt_without_data = "You queried the graph and it returned an empty output.\
