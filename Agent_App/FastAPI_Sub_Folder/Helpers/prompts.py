@@ -43,7 +43,8 @@ extractor_prompt = "You have now queried the graph.\
 # Prompt given to the model to recommend careers using extracted data
 recommender_prompt_with_data = "You queried the graph and extracted the necessary data from the returned output.\
             Here are the extracted data: {extracted_data}\
-            now use the conversation's history with the extracted data from the returned query to give me suitable career tracks."
+            now use the conversation's history with the extracted data from the returned query to give me suitable career tracks.\
+            Do not mention the cypher query in your output."
 
 # Prompt given to the model to recommend careers without using extracted data
 recommender_prompt_without_data = "You queried the graph and it returned an empty output.\
