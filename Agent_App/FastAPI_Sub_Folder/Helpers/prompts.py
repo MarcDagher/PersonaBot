@@ -21,14 +21,6 @@ reminder = "Summary of your task: You will conduct a personality test then query
 
 personality_scientist_prompt = f"{task}\ {schema_context}\ {property_values}\ {query_approach}\ {output}\ {tone}\ {reminder}"
 
-# # Prompt given to the model to extract data from the returned query output
-# extractor_prompt = "You have now queried the graph.\
-#             Here is the cypher code you wrote and the returned data: {queried_data}.\
-#             Read it, extract everything that is suitable for my character and that you might find useful when recommending careers.\
-#             Return what you extracted from the output in the format of [['Node1','relation_name','Node2']...]  where related nodes are together\
-#             Note: do not add any explanation, description, analysis or even recommendations. Stick to the format I told you about.\
-#             Reminder, please return your output in this the format, I need it like this so that I can plot it: [['Node1','relation_name','Node2']]"
-
 # Prompt given to the model to extract data from the returned query output
 extractor_prompt = "You have now queried the graph.\
             Here is the cypher code you wrote and the returned data: {queried_data}.\
