@@ -57,9 +57,9 @@ class Agent:
         graph.add_node("recommend_careers", self.recommend_careers)
 
         graph.add_conditional_edges("personality_scientist", self.validate_tool_call, {True: 'validate_cypher_then_query_graph', False: END})
+        graph.add_conditional_edges("recommend_careers", self.validate_tool_call, {True: 'validate_cypher_then_query_graph', False: END})
         graph.add_edge("validate_cypher_then_query_graph", "extract_data")
         graph.add_edge("extract_data", "recommend_careers")
-        graph.add_edge("recommend_careers", END)
         graph.set_entry_point("personality_scientist")
 
         self.graph = graph.compile(checkpointer=memory)
@@ -177,13 +177,15 @@ class Agent:
 
         return return_statement
     
-    ## Invoke tool
+    ## LLM extracts what it needs from the query's output
     def extract_data(self, state: AgentState):
         print('\n-------> In extract data')
 
         if len(state['graph_data_to_be_used']) > 0:
             data_to_give_to_the_LLM = [{cypher: state['good_cypher_and_outputs'][cypher]} for cypher in state['graph_data_to_be_used']]
-            extracted_data = self.model.invoke(prompts.extractor_prompt.format(queried_data = data_to_give_to_the_LLM))
+            extracted_data = self.model.invoke(
+                prompts.extractor_prompt.format(queried_data = data_to_give_to_the_LLM, conversation = state['conversation'])
+                )
             print("----- Data has been extracted")
             return {'extracted_data': [extracted_data.content]}
 
