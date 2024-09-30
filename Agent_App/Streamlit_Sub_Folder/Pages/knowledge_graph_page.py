@@ -49,8 +49,10 @@ def display_knowledge_graph_page(session_state):
                 Agent's Extracted Data From Knowledge Graph
               </h1>""",  unsafe_allow_html=True)
       
-      graph = display_extracted_traits_data(ast.literal_eval(extracted_data))
-      st.plotly_chart(graph)
+      extracted_data = ast.literal_eval(extracted_data)
+
+      graph = display_extracted_traits_data(extracted_data)
+      st.plotly_chart(graph)      
     except Exception as e:
       display_error_box(text="⚠️ Attempted to draw the graph, but the Agent returned an unexpected format. ⚠️")
   
