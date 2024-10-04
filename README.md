@@ -43,3 +43,8 @@ We used <a href="https://docs.confident-ai.com/">DeepEval</a>, an evaluation fra
 <li>Logical Suggestions: Coherence of career suggestions based on user-agent conversations</li> <br>
 The agent performed well, scoring 90-95% across all metrics. Additionally, we used LangSmith for continuous monitoring of the agent's workflows, which streamlined tracking, debugging, and optimizing AI models, ensuring consistent, high-quality outputs from the LLM.
 <a href="https://github.com/MarcDagher/PersonaBot/blob/main/LLM_Evaluation/eval.ipynb">This</a> is the link to the evaluation notebook.
+
+<h3>Demo</h3>
+In this demo, you will see the interaction with the conversational agent, as well as a visualization of the queried data from the knowledge graph and the data that the agent extracted from it.
+
+![Demo](https://github.com/MarcDagher/PersonaBot/blob/main/Images_and_Videos/demo%20(1).gif)
