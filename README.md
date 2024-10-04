@@ -45,6 +45,6 @@ The agent performed well, scoring 90-95% across all metrics. Additionally, we us
 <a href="https://github.com/MarcDagher/PersonaBot/blob/main/LLM_Evaluation/eval.ipynb">This</a> is the link to the evaluation notebook.
 
 <h3>🎬Demo</h3>
-In this demo, you will see the interaction with the conversational agent, as well as a visualization of the queried data from the knowledge graph and the data that the agent extracted from it. <br><br>
+In this demo, you will see the interaction with the conversational agent, as well as a visualization of the queried data from the knowledge graph and the data that the agent extracted from it. We built the app using FastAPI and Streamlit. <br><br>
 
 ![Demo](https://github.com/MarcDagher/PersonaBot/blob/main/Images_and_Videos/demo%20(1).gif)
