@@ -21,7 +21,7 @@ The system we built carries the following tasks:
 <li>Extracts whatever it needs from the queried data</li> 
 <li>Suggests suitable career tracks</li> 
 <li>Answers any questions</li><br>
-To orchestrate this <a href="https://github.com/MarcDagher/PersonaBot/blob/main/Images/agent.jpg">workflow</a> we used <a href="https://www.langchain.com/langgraph">LangGraph</a> and <a href="https://console.groq.com/docs/models">Groq</a>'s llama3-70b-8192 for its tool-use capabilities.
+To orchestrate this <a href="https://github.com/MarcDagher/PersonaBot/blob/main/Images/agent.jpg">workflow</a> we used <a href="https://www.langchain.com/langgraph">LangGraph</a> and <a href="https://console.groq.com/docs/models">Groq</a>'s llama-3.1-70b-versatile for its tool-use capabilities.
 
 <h3>⚙️Prompt Engineering</h3>
 
