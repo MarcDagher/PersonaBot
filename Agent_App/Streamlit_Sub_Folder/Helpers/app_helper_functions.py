@@ -107,7 +107,7 @@ def display_extracted_traits_data(data):
 
     # Extract heads, tails, and relations
     for row in data:
-        if len(row) == 2:
+        if len(row) == 3:
             head = row[0]
             relation = row[1]
             tail = row[2]
