@@ -1,3 +1,4 @@
+<h1 align="center"> 🎓PersonaBot: A Retrieval-Augmented Agentic Career Guide</h1>
 
 **PersonaBot** is an AI tool designed to help with career decision-making. It assesses user personality and skills through interactive interviews and recommends suitable career paths using a comprehensive knowledge graph based on the RIASEC model.
 
